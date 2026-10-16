@@ -1,0 +1,1407 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0e1730">
+  <meta name="description" content="My Wealth: il tuo patrimonio personale, gli investimenti e il conto condiviso in una sola app.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="My Wealth">
+  <style>
+
+:root{--navy:#101932;--navy2:#1c2945;--ink:#19253e;--sub:#758096;--muted:#9ca7b9;--bg:#f5f7fc;--white:#fff;--line:#e7ebf3;--blue:#5369e9;--blueLight:#ecedfe;--green:#0a927d;--greenLight:#e8f7f3;--orange:#bb802e;--orangeLight:#fff5e4;--red:#d34d64;--redLight:#fff0f3;--shadow:0 14px 36px rgba(25,36,73,.055)}
+*{box-sizing:border-box}html{font-family:'DM Sans',system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:var(--bg)}body{margin:0;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}a{color:inherit}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a8b4fd;outline-offset:2px}.app-layout{display:flex;min-height:100vh}.sidebar{width:254px;background:var(--navy);color:#d9e0ee;padding:30px 15px 22px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;flex-shrink:0}.brand{display:flex;gap:12px;align-items:center;padding:0 13px 30px;color:white}.brand-logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(155deg,#8193ff,#46c5b9);display:grid;place-items:center;font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:24px;color:white;box-shadow:0 4px 15px #4659ce55}.brand-title{font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.7px}.brand-subtitle{font-size:10px;color:#a8b3ca;letter-spacing:1.2px;text-transform:uppercase}.nav-section-title{font-size:10px;color:#8492af;letter-spacing:1.4px;text-transform:uppercase;padding:18px 16px 9px;font-weight:700}.nav-item{display:flex;align-items:center;gap:13px;width:100%;text-align:left;color:#abb8d0;background:transparent;border:none;border-radius:12px;padding:13px 15px;margin-bottom:5px;font-size:13px;font-weight:600}.nav-item:hover{background:#243152;color:#fff}.nav-item.active{background:#35446d;color:white}.nav-emoji{width:23px;font-size:18px;display:inline-grid;place-items:center}.side-bottom{margin-top:auto;border-top:1px solid #303f5e;padding:18px 10px 0}.side-bottom .time{color:#e6edfa;font-size:13px;font-weight:700}.side-bottom .hint{color:#8390ab;font-size:11px;line-height:1.6;margin-top:5px}.main{flex:1;min-width:0}.content{max-width:1260px;margin:0 auto;padding:34px 42px 90px}.top-bar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:26px}.eyebrow{font-size:12px;color:var(--sub);font-weight:600}.page-title{font-family:Manrope,sans-serif;font-weight:800;font-size:30px;letter-spacing:-1.1px;line-height:1.2;margin:5px 0 0}.top-actions{display:flex;gap:9px;align-items:center}.pill-date{border:1px solid var(--line);padding:10px 13px;border-radius:12px;background:white;color:var(--sub);font-size:12px;font-weight:600}.btn{border:0;border-radius:11px;padding:10px 15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:800;white-space:nowrap}.btn.primary{background:var(--blue);color:#fff;box-shadow:0 5px 16px #5369e91e}.btn.primary:hover{background:#435bd7}.btn.secondary{background:#eef0ff;color:#5362bb}.btn.ghost{background:white;border:1px solid var(--line);color:#4b5671}.btn.warn{background:var(--redLight);color:var(--red)}.btn.small{padding:7px 10px;font-size:11px;border-radius:9px}.btn.fill{width:100%}.stack{display:flex;flex-direction:column;gap:18px}.grid{display:grid;gap:17px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}.panel{border:1px solid var(--line);border-radius:17px;background:white;padding:22px;box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.panel-title{font-size:15px;letter-spacing:-.35px;font-weight:800;font-family:Manrope,sans-serif;margin:0}.micro{color:var(--sub);font-size:12px;line-height:1.5}.hero{background:linear-gradient(125deg,#172440 0%,#253862 65%,#335176 100%);border:1px solid #172440;color:#fff;position:relative;overflow:hidden;padding:28px 30px;box-shadow:0 16px 35px rgba(22,36,75,.15)}.hero:after{content:"";position:absolute;width:310px;height:310px;right:-106px;top:-180px;border-radius:50%;border:50px solid #ffffff09;pointer-events:none}.hero-label{color:#bbcae4;font-size:12px;font-weight:700}.hero-amount{font-family:Manrope,system-ui,sans-serif;font-size:43px;letter-spacing:-2px;line-height:1.25;font-weight:800;margin:9px 0 7px}.hero-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:#c2cfe1;font-size:12px}.token{font-size:10px;font-weight:800;padding:5px 8px;border-radius:999px;display:inline-block;background:#ffffff19;color:#e1e8f6;white-space:nowrap}.token.green{background:var(--greenLight);color:var(--green)}.token.blue{background:var(--blueLight);color:#5262c9}.token.orange{background:var(--orangeLight);color:var(--orange)}.token.red{background:var(--redLight);color:var(--red)}.metric{padding:19px 20px}.metric-head{display:flex;align-items:center;justify-content:space-between;color:var(--sub);font-weight:700;font-size:11px}.metric-icon{font-size:19px;background:var(--bg);border-radius:10px;width:32px;height:32px;display:grid;place-items:center}.metric-value{font-family:Manrope,system-ui,sans-serif;font-size:23px;font-weight:800;letter-spacing:-.7px;margin-top:11px;overflow-wrap:anywhere}.metric-hint{color:var(--muted);font-size:11px;margin-top:6px}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.section-heading h2{font-family:Manrope,system-ui,sans-serif;font-size:18px;margin:0;letter-spacing:-.5px}.section-heading p{font-size:12px;color:var(--sub);margin:5px 0 0}.rows{display:flex;flex-direction:column}.data-row{display:flex;align-items:center;gap:13px;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line)}.data-row:last-child{border-bottom:0}.data-row .item-main{flex:1;min-width:0}.item-name{font-weight:800;font-size:13px;overflow-wrap:anywhere}.item-meta{color:var(--sub);font-size:11px;margin-top:4px;line-height:1.45}.item-val{text-align:right;font-family:Manrope,system-ui,sans-serif;font-weight:800;font-size:14px;white-space:nowrap}.item-sub{text-align:right;color:var(--sub);font-size:10px;margin-top:3px}.round-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:var(--blueLight);font-size:17px;flex-shrink:0}.round-icon.green{background:var(--greenLight)}.round-icon.orange{background:var(--orangeLight)}.round-icon.slate{background:#edf1f6}.clickable{cursor:pointer}.clickable:hover{background:#f9faff}.empty{padding:22px;text-align:center;border:1px dashed #d6def0;border-radius:14px;background:#fbfcff;color:var(--sub);font-size:12px;line-height:1.7}.inline-alert{background:#fff8ea;color:#8b682c;border:1px solid #f3e4c4;padding:13px 15px;border-radius:11px;font-size:12px;line-height:1.6}.inline-alert.info{background:#edf4ff;border-color:#dbe8ff;color:#4e648d}.inline-alert.success{background:var(--greenLight);border-color:#d5eee7;color:#267866}.mini-link{border:0;background:transparent;color:var(--blue);font-size:11px;font-weight:800;padding:5px}.mini-link:hover{text-decoration:underline}.table-wrap{overflow-x:auto;width:100%}table{width:100%;border-collapse:collapse;font-size:12px}th{padding:12px 9px;text-align:left;background:#f7f9fc;color:#728097;font-size:10px;letter-spacing:.5px;text-transform:uppercase}th:first-child{border-radius:9px 0 0 9px}th:last-child{border-radius:0 9px 9px 0}td{padding:13px 9px;border-bottom:1px solid var(--line);vertical-align:middle}td:last-child{text-align:right}tr:last-child td{border-bottom:0}.muted{color:var(--sub)}.pos{color:var(--green)}.neg{color:var(--red)}.tab-chips{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid var(--line);border-radius:8px;background:white;color:var(--sub);padding:7px 11px;font-size:11px;font-weight:800}.chip.active{background:var(--navy2);border-color:var(--navy2);color:white}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:var(--sub)}.legend span{display:inline-flex;gap:6px;align-items:center}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--blue)}.dot.teal{background:#19a994}.dot.orange{background:#dfb26f}.graph{width:100%;height:210px;display:block}.graph-ticks{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-top:-5px}.split-bar{display:flex;height:11px;border-radius:99px;overflow:hidden;gap:2px;background:#eff2f7;margin:14px 0 10px}.split-bar>span{height:100%}.split-legend{display:flex;justify-content:space-between;font-size:11px;color:var(--sub);gap:9px;flex-wrap:wrap}.account-grid{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:16px}.account-card .balance{font-size:25px;font-family:Manrope,system-ui,sans-serif;font-weight:800;letter-spacing:-.8px;margin:13px 0 6px}.account-card .account-title{font-weight:800;font-size:14px}.account-card .account-note{font-size:11px;color:var(--sub);margin:5px 0}.account-card .last{font-size:10px;color:var(--sub)}.account-card .action{margin-top:16px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:11px;font-weight:800;color:#4c5871}.field input,.field select,.field textarea{width:100%;border-radius:10px;border:1px solid #dce2ed;background:#fff;padding:11px 12px;font-size:13px;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#7b8bf2;box-shadow:0 0 0 3px #5369e914}.field small{font-size:10px;color:var(--sub);line-height:1.5}.modal-overlay{z-index:1000;position:fixed;inset:0;background:#0f1c34a8;display:flex;align-items:center;justify-content:center;padding:20px}.modal{width:100%;max-width:560px;background:white;border-radius:20px;box-shadow:0 28px 80px #0004;max-height:92vh;overflow-y:auto}.modal-top{padding:24px 25px 13px;display:flex;align-items:start;justify-content:space-between;gap:10px}.modal-title{font-family:Manrope,system-ui,sans-serif;font-size:19px;letter-spacing:-.4px;font-weight:800}.modal-description{margin-top:5px;color:var(--sub);font-size:12px;line-height:1.5}.modal-close{font-size:23px;color:var(--sub);border:0;background:transparent}.modal-body{padding:6px 25px 25px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.form-grid .full{grid-column:1/-1}.form-footer{display:flex;justify-content:end;gap:9px;padding-top:22px}.insight{background:var(--bg);border-radius:11px;padding:13px;font-size:11px;color:var(--sub);line-height:1.6}.insight strong{color:var(--ink)}.divider{height:1px;background:var(--line);margin:10px 0}.value-list{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:8px 0;gap:12px}.value-list strong{font-family:Manrope}.plan-tag{font-size:10px;color:var(--sub);line-height:1.4}.hero-overview{display:grid;grid-template-columns:1.8fr 1fr;gap:17px}.footer-note{font-size:10px;text-align:center;color:var(--muted);padding:18px}.bottom-nav{display:none}#toast{position:fixed;bottom:24px;right:24px;padding:13px 18px;border-radius:12px;background:#162440;color:#fff;box-shadow:0 10px 30px #0012;font-size:12px;z-index:1200;display:none;max-width:330px}#toast.show{display:block}.skeleton{color:#aab2c3}.tiny{font-size:10px}.indent{padding-left:6px}.plan-action{display:flex;gap:7px;align-items:center;justify-content:end;flex-wrap:wrap}.form-checkbox{display:flex;gap:10px;align-items:start;font-size:12px;line-height:1.5}.form-checkbox input{margin-top:4px}.colored-box{border-radius:13px;background:#f5f7fb;padding:15px}.colored-box .number{font:800 23px system-ui,sans-serif;margin:5px 0}.scroll-list{max-height:340px;overflow:auto}.lower{margin-top:7px}.nowrap{white-space:nowrap}.mobile-only{display:none}
+@media(max-width:1150px){.sidebar{width:205px}.content{padding:30px 24px 90px}.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:750px){.app-layout{display:block}.sidebar{display:none}.content{padding:20px 15px 94px}.top-bar{align-items:start;margin-bottom:20px}.page-title{font-size:24px}.pill-date{display:none}.top-actions .btn{font-size:11px;padding:10px 11px}.hero-overview,.grid.two,.grid.three{grid-template-columns:1fr}.hero{padding:23px}.hero-amount{font-size:35px}.metric-value{font-size:22px}.grid.four{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.metric{padding:15px}.metric-head{font-size:10px}.metric-icon{width:26px;height:26px;font-size:15px}.panel{padding:17px}.account-grid{grid-template-columns:1fr}.bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;justify-content:space-around;background:#fffffffa;box-shadow:0 -3px 25px #24314c14;border-top:1px solid var(--line);padding:9px 7px calc(9px + env(safe-area-inset-bottom))}.bottom-nav button{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:4px;color:#8a96a9;font-size:9px;font-weight:800;min-width:48px}.bottom-nav button.active{color:var(--blue)}.bottom-nav button span{font-size:19px}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:1}.modal-overlay{padding:10px;align-items:end}.modal{border-radius:20px 20px 10px 10px;max-height:90vh}.modal-body{padding:6px 19px 20px}.modal-top{padding:20px 19px 12px}.mobile-only{display:block}.section-heading h2{font-size:16px}.table-wrap{margin:0 -5px;width:calc(100% + 10px)}td{padding:11px 7px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+
+.market-feed-panel{background:linear-gradient(120deg,#fff,#f4f7ff);border-color:#dfe5fd}
+.market-feed-panel .panel-head{flex-wrap:wrap}
+@media (max-width:700px){.market-feed-panel .archive-actions{flex-wrap:wrap}.market-feed-panel .btn{flex:1}}
+.archive-info strong{overflow-wrap:anywhere;word-break:break-word}</style>
+  <title>My Wealth 2.2 · Patrimonio personale</title>
+<style>
+
+/* v1.3: visible document saving, also on narrow Windows screens */
+.top-bar{align-items:flex-start;flex-wrap:wrap}
+.top-actions{flex-wrap:wrap;justify-content:flex-end;max-width:100%}
+.save-indicator{display:inline-flex;align-items:center;font-size:11px;font-weight:750;line-height:1.2;border:1px solid #e2e8f4;padding:9px 10px;border-radius:9px;background:#f8fafc;color:#64748b;white-space:normal}
+.save-indicator.saved{color:#117761;background:#e9f7f2;border-color:#cbeadd}
+.save-indicator.dirty{color:#ae6816;background:#fff5e6;border-color:#fae1ba}
+.save-indicator.unsaved{color:#526179;background:#eef2f8;border-color:#dce3ee}
+.archive-save{background:#0f927d!important;color:white!important;box-shadow:none!important}
+.archive-save:hover{background:#087b68!important}
+.archive-actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.archive-info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.archive-info>div{border:1px solid #e4e9f2;padding:13px;border-radius:11px;min-width:0}
+.archive-info span{display:block;font-size:11px;color:#6a7589;margin-bottom:7px}
+.archive-info strong{display:block;font-size:12px;overflow-wrap:anywhere}
+@media(max-width:1180px){.top-bar{display:block}.top-actions{justify-content:flex-start;margin-top:14px}}
+@media(max-width:750px){.top-actions{gap:7px}.top-actions .btn{font-size:11px;padding:9px 11px}.top-actions .save-indicator{font-size:10px;padding:8px}.archive-info{grid-template-columns:1fr}.archive-actions .btn{flex:1 1 180px}}
+
+</style>
+<style>
+/* My Wealth 1.4: dynamic movement form, compatible with desktop and mobile. */
+.movement-slot[hidden]{display:none!important}
+.movement-slot{min-width:0}
+.movement-advanced{border:1px solid #dfe5ef;border-radius:11px;background:#fafbff;overflow:hidden}
+.movement-advanced summary{list-style:none;cursor:pointer;font-size:12px;font-weight:800;padding:14px;color:#4354a2;display:flex;align-items:center;justify-content:space-between}
+.movement-advanced summary::after{content:'＋';font-size:16px;line-height:1}
+.movement-advanced[open] summary::after{content:'−'}
+.movement-advanced summary::-webkit-details-marker{display:none}
+.movement-advanced-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 13px 14px}
+.movement-context{color:#4f6179;background:#eef4ff;border:1px solid #dce7ff}
+@media(max-width:750px){.movement-advanced-fields{grid-template-columns:1fr}}
+
+/* My Wealth 1.9.1 - clear chronological lists and upcoming transfers */
+.upcoming-panel{padding:22px 24px 16px;overflow:hidden}
+.upcoming-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.upcoming-head h2{margin:0;font-size:16px;font-family:Manrope,system-ui,sans-serif;letter-spacing:-.35px}
+.timeline-summary{margin:7px 0 16px;color:var(--sub);font-size:12px;line-height:1.6}
+.timeline-wrap{max-height:510px;overflow-y:auto;padding:3px 8px 3px 3px;scrollbar-color:#cfd7e7 transparent;scrollbar-width:thin}
+.timeline-day{display:grid;grid-template-columns:23px minmax(0,1fr);gap:12px;position:relative;padding-bottom:18px}
+.timeline-day:last-child{padding-bottom:0}
+.timeline-track{display:flex;flex-direction:column;align-items:center;padding-top:9px}
+.timeline-dot{width:11px;height:11px;border-radius:50%;background:#6b7aee;border:3px solid #e6eaff;box-shadow:0 0 0 1px #7a8aea;z-index:1;flex:none}
+.timeline-rail{height:100%;width:2px;background:#e8ebfa;min-height:22px;transform:translateY(3px)}
+.timeline-day:last-child .timeline-rail{background:transparent}
+.timeline-content{min-width:0}
+.timeline-day-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 9px}
+.timeline-date{font-size:13px;font-weight:800;color:#253456}
+.timeline-weekday{text-transform:capitalize}
+.timeline-day-total{font-size:12px;color:#5364a1;font-weight:800;background:#eef1ff;padding:5px 10px;border-radius:999px}
+.timeline-items{background:#fbfcff;border:1px solid #e8edf7;border-radius:12px;padding:2px 13px}
+.timeline-item{display:flex;align-items:center;gap:11px;padding:11px 0;min-width:0}
+.timeline-item+.timeline-item{border-top:1px solid #edf0f6}
+.timeline-item-bullet{display:grid;place-items:center;width:26px;height:26px;flex:none;border-radius:9px;background:#e8edf9;font-size:12px;color:#6374b7}
+.timeline-item-info{flex:1;min-width:0}
+.timeline-item-name{font-size:12px;font-weight:750;line-height:1.5;color:#27334d}
+.timeline-item-note{font-size:10px;color:#8793a7;margin-top:2px}
+.timeline-item-amount{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.timeline-footer{margin-top:12px;font-size:11px;color:#8290a4}
+.movement-section-hint{font-size:11px;color:#8190a7;margin:0 0 10px}
+.movement-pending{background:#fffdf5;border-color:#f0e4c9}
+.movement-pending .data-row{background:transparent}
+@media(max-width:750px){.upcoming-panel{padding:18px 15px}.timeline-wrap{max-height:550px}.timeline-day{grid-template-columns:17px minmax(0,1fr);gap:9px}.timeline-items{padding:2px 10px}.timeline-item{gap:8px}.timeline-item-name{font-size:11px}.timeline-item-bullet{width:23px;height:23px}.timeline-item-amount{font-size:12px}.timeline-day-total{font-size:11px}}
+</style>
+</head>
+<body>
+  <div id="app">
+    <main style="max-width:700px;margin:10vh auto;padding:22px;font-family:Arial,sans-serif;color:#19253e">
+      <div style="border:1px solid #e2e7f1;border-radius:20px;background:#fff;padding:30px;box-shadow:0 12px 30px #15204012">
+        <div style="font-size:28px;font-weight:800;margin-bottom:9px">My Wealth</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:14px">Anteprima del file · non interattiva</div>
+        <p style="line-height:1.7;color:#505b6f">Se vedi questo messaggio invece della dashboard, il browser o l'anteprima sta bloccando l'app. Non c'e' nulla da configurare in questa schermata.</p>
+        <div style="background:#eef2ff;border-radius:12px;padding:15px;line-height:1.7;font-size:14px">
+          <strong>Per aprire l'app su Windows:</strong><br>
+          1. Scarica il file <strong>My_Wealth_Locale_1_7.zip</strong> dalla chat.<br>
+          2. Apri Esplora file &gt; Download, fai clic destro sullo ZIP e scegli <strong>Estrai tutto</strong>.<br>
+          3. Apri il file <strong>My_Wealth.html</strong> nella cartella estratta con Google Chrome o Microsoft Edge.
+        </div>
+        <p style="font-size:12px;line-height:1.6;color:#7c8799">Una volta avviata correttamente, vedrai il menu: Dashboard · Conti e liquidita' · Investimenti · Versamenti automatici. I tuoi 9 piani sono gia' configurati.</p>
+      </div>
+    </main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script>
+// My Wealth: pure, testable accounting engine. Dates: ISO 8601 calendar days, Europe/Rome.
+const START_DATE = '2026-10-16';
+const SCHEMA_VERSION = 1; // JSON 1.5 compatible; pension profile update is additive.
+// Position from owner as of 1 September; official NAV refers to 31 August.
+const PREVIBANK_BASE={positionDate:'2026-09-01',quoteDate:'2026-08-31',nav:27.646};
+const ALLIANZ_AZIONARIA_PUBLIC_REFERENCE={date:'2026-10-07',nav:35.252};
+
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const eurRound = n => Math.round((n + Number.EPSILON) * 100) / 100;
+
+function blankState() {
+  const investments = [
+    ['jpm','CHP XC JPM Global Dividend','Allianz Bank','fund',''],
+    ['artificial','CHP XT AllianzGI Artificial','Allianz Bank','fund',''],
+    ['asia','MSCI EM Asia','Trade Republic','etf','LU1681044480'],
+    ['clean','Global Clean Energy USD (Acc)','Trade Republic','etf','IE000U58J0M1'],
+    ['space','Space Innovators USD (Acc)','Trade Republic','etf','IE000YU9K6K2'],
+    ['previbank','Previbank · Finanziario (profilo azionario)','Previbank','pension',''],
+    ['allianz-pensione','Allianz Previdenza','Allianz Bank','pension',''],
+  ].map(([id,name,provider,kind,isin]) => ({ id,name,provider,kind,isin, ticker: ({asia:'AASI.MI',clean:'INRE.PA',space:'JEDI.MI'})[id]||'', marketQuotes:[], pensionLine:'', investedBeforeStart:null,observations:[] }));
+  // Preview position as of the actual recorded date, not invented as today's NAV.
+  const pb=investments.find(a=>a.id==='previbank');
+  pb.pensionProfile='finanziario';
+  pb.previbankBaselineConfirmed=false;
+  // The owner's number of units is PRIVATE and comes from the local JSON, never the public app bundle.
+  pb.observations=[];
+  pb.marketQuotes=[{date:PREVIBANK_BASE.quoteDate,price:PREVIBANK_BASE.nav,currency:'EUR',
+    source:'Previbank · valore quota ufficiale agosto 2026',manual:false,
+    verifiedReference:true,checkedAt:null}];
+  const ap=investments.find(a=>a.id==='allianz-pensione');
+  ap.pensionLine='azionaria';
+  // Verified public reference is not an automatically retrieved quote. This is
+  // held separately from the live feed and carries its real historic date.
+  ap.marketQuotes=[{date:ALLIANZ_AZIONARIA_PUBLIC_REFERENCE.date,price:ALLIANZ_AZIONARIA_PUBLIC_REFERENCE.nav,currency:'EUR',
+    source:'Investing.com · riferimento pubblico verificato, NON live · Linea Azionaria',manual:false,
+    verifiedReference:true,checkedAt:null,pensionLine:'azionaria'}];
+  // Routines confirmed in chat on 16 Oct 2026; first effective installment
+  // cannot predate START_DATE. Pension payroll at calendar month's end.
+  // The 0.75% Allianz PAC expense is editable and based on earlier user reports.
+  const specs = [
+    ['jpm','jpm',0,'monthly','allianz',0,'CHP XC JPM Global Dividend',[15]],
+    ['artificial','artificial',0,'monthly','allianz',0,'CHP XT AllianzGI Artificial',[15]],
+    ['asia','asia',0,'twice','tr',0,'MSCI EM Asia · PAC',[2,16]],
+    ['clean','clean',0,'twice','tr',0,'Global Clean Energy · PAC',[2,16]],
+    ['space','space',0,'twice','tr',0,'Space Innovators · PAC',[2,16]],
+    ['prev-employee','previbank',0,'monthly','external',0,'Previbank · quota personale',[31]],
+    ['prev-employer','previbank',0,'monthly','external',0,'Previbank · quota datore',[31]],
+    ['prev-tfr','previbank',0,'monthly','external',0,'Previbank · TFR',[31]],
+    ['allianz-pension','allianz-pensione',0,'monthly','allianz',0,'Allianz Previdenza',[15]],
+  ];
+  return {
+    schemaVersion:SCHEMA_VERSION, planPresetVersion:2, quoteModelVersion:1, startDate: START_DATE,
+    accounts:[
+      {id:'allianz',name:'Allianz Bank',group:'personal',observations:[]},
+      {id:'tr',name:'Trade Republic',group:'personal',observations:[]},
+      {id:'cash',name:'Contanti',group:'personal',observations:[{date:START_DATE,amount:0}]},
+      {id:'sella',name:'Banca Sella · conto comune',group:'common',observations:[]},
+    ],
+    investments,
+    marketSettings:{autoRefresh:true},
+    plans:specs.map(([id,assetId,amount,frequency,source,feePercent,label,days])=>({id,assetId,amount,frequency,days,startDate:START_DATE,source,feePercent,label,active:false})),
+    movements:[], planOverrides:{},
+    card:{openingDebt:null,openingPeriod:'2026-10'},
+    createdAt:new Date().toISOString()
+  };
+}
+
+// Upgrade the unconfigured 1.0 templates without destroying manual changes.
+// Existing account balances, transactions, observations, and confirmed dues are untouched.
+function upgradePresets(data) {
+  if (!data || data.planPresetVersion>=2) return data;
+  const preset=blankState();
+  for(const p of data.plans || []){
+    const target=preset.plans.find(x=>x.id===p.id);
+    if(target && !p.active && (!p.days || p.days.length===0)) Object.assign(p,target);
+  }
+  for(const a of data.investments || []){
+    const template=preset.investments.find(x=>x.id===a.id);
+    if(template){
+      if(!a.isin)a.isin=template.isin;
+      if(!a.observations?.length)a.name=template.name;
+    }
+  }
+  data.planPresetVersion=2;
+  return data;
+}
+
+
+// Migrate historical ETF records from My Wealth 1.5. In that version 'price'
+// was frequently the average *purchase* price even though it was used as a
+// market price. Never silently reuse it for today's valuation.
+function upgradeMarketModel(data){
+  if(!data || data.quoteModelVersion>=1)return data;
+  for(const asset of data.investments||[]){
+    if(asset.kind!=='etf')continue;
+    asset.ticker=asset.ticker||({asia:'AASI.MI',clean:'INRE.PA',space:'JEDI.MI'})[asset.id]||'';
+    asset.marketQuotes=Array.isArray(asset.marketQuotes)?asset.marketQuotes:[];
+    for(const ob of asset.observations||[]){
+      if(ob.mode==='units' && ob.avgPrice===undefined){
+        // Preserve old entry for audit; it is NOT market price.
+        ob.avgPrice=Number(ob.price)||null;
+        ob.legacyEnteredPrice=ob.price;
+        ob.price=null;
+        ob.needsCurrentQuote=true;
+      }
+    }
+  }
+  data.marketSettings=data.marketSettings||{autoRefresh:true};
+  data.quoteModelVersion=1;
+  return data;
+}
+// Safe migration of existing JSON files. Already entered client positions are
+// NEVER replaced here; instead an explicit correction action is offered.
+function applyKnownPensionFacts(data){
+  const pb=(data.investments||[]).find(a=>a.id==='previbank');
+  if(pb){
+    pb.name='Previbank · Finanziario (profilo azionario)';
+    pb.pensionProfile='finanziario';
+    if(!Array.isArray(pb.marketQuotes))pb.marketQuotes=[];
+    // This quote has an official reference date; never overwrite later quotes.
+    if(!pb.marketQuotes.some(q=>q.date===PREVIBANK_BASE.quoteDate)){
+      pb.marketQuotes=insertObservation(pb.marketQuotes,{date:PREVIBANK_BASE.quoteDate,
+        price:PREVIBANK_BASE.nav,currency:'EUR',manual:false,verifiedReference:true,
+        source:'Previbank · valore quota ufficiale agosto 2026',checkedAt:null});
+    }
+    if(!Array.isArray(pb.observations))pb.observations=[];
+    // Do not invent the account holder's personal share balance. It is read from the local JSON.
+    if(pb.observations.length && pb.observations.some(o=>o.mode==='units'&&Number(o.units)>0))
+      pb.previbankBaselineConfirmed=true;
+  }
+  const ap=(data.investments||[]).find(a=>a.id==='allianz-pensione');
+  if(ap){
+    if(!ap.pensionLine)ap.pensionLine='azionaria';
+    if(!Array.isArray(ap.marketQuotes))ap.marketQuotes=[];
+    // Only seed the verified public reference when the user's line matches.
+    if(ap.pensionLine==='azionaria' && !ap.marketQuotes.some(q=>q.date>=ALLIANZ_AZIONARIA_PUBLIC_REFERENCE.date)){
+      ap.marketQuotes=insertObservation(ap.marketQuotes,{date:ALLIANZ_AZIONARIA_PUBLIC_REFERENCE.date,
+        price:ALLIANZ_AZIONARIA_PUBLIC_REFERENCE.nav,currency:'EUR',manual:false,verifiedReference:true,
+        source:'Investing.com · riferimento pubblico verificato, NON live · Linea Azionaria',
+        checkedAt:null,pensionLine:'azionaria'});
+    }
+  }
+  return data;
+}
+function normalizeState(data){
+  const clean=upgradeMarketModel(upgradePresets(data));
+  for(const a of clean.investments||[]){
+    if(a.kind==='etf'||a.kind==='fund'||a.kind==='pension'){
+      a.ticker=a.ticker||({asia:'AASI.MI',clean:'INRE.PA',space:'JEDI.MI'})[a.id]||'';
+      if(!Array.isArray(a.marketQuotes))a.marketQuotes=[];
+    }
+    if(a.id==='allianz-pensione' && typeof a.pensionLine!=='string')a.pensionLine='';
+  }
+  const result=applyKnownPensionFacts(clean);
+  // If an older user JSON contains a confirmed opening *units* observation,
+  // do not let a later erroneous value-only snapshot obscure that inventory.
+  // The verification quantity comes solely from local JSON (not public code).
+  const pb=(result.investments||[]).find(a=>a.id==='previbank');
+  if(pb && !pb.previbankOpeningRepair221){
+    const positions=pb.observations||[];
+    const trusted=positions.find(o=>o.mode==='units' && Number(o.units)>0 &&
+      /dichiarat|confermat|certificat/i.test(String(o.source||'')));
+    const latest=bestObservation(positions,START_DATE);
+    const nav=bestObservation(pb.marketQuotes||[],START_DATE);
+    const qty=Number(trusted?.units),navPrice=Number(nav?.price);
+    const measured=latest?.mode==='value'?Number(latest.value):
+      latest?.mode==='units'?Number(latest.units)*navPrice:NaN;
+    if(trusted && latest && navPrice>0 && Number.isFinite(measured) && measured>0 &&
+       measured<qty*navPrice*0.65 && latest.date>=trusted.date){
+      pb.previousPositions=Array.isArray(pb.previousPositions)?pb.previousPositions:[];
+      pb.previousPositions.push({replacedAt:new Date().toISOString(),
+        reason:'Rettifica automatica apertura incoerente con quote confermate nel JSON locale',
+        observations:JSON.parse(JSON.stringify(positions.filter(o=>o.date<=START_DATE)))});
+      pb.observations=[{...trusted},...positions.filter(o=>o.date>START_DATE)];
+      pb.previbankBaselineConfirmed=true;
+      pb.previbankOpeningRepair221=true;
+    }
+  }
+  return result;
+}
+const isValidDate = v => DATE_RE.test(v||'') && !Number.isNaN(new Date(`${v}T12:00:00Z`).getTime()) && new Date(`${v}T12:00:00Z`).toISOString().slice(0,10) === v;
+function todayRome(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}
+function lastDay(year,month){return new Date(Date.UTC(year,month,0)).getUTCDate();}
+function monthKey(date){return (date||'').slice(0,7);}
+function nextMonthPeriod(date){const [y,m]=date.slice(0,7).split('-').map(Number);const n=m===12?1:m+1;return `${m===12?y+1:y}-${String(n).padStart(2,'0')}`;}
+function cardDueDate(period){if (!/^\d{4}-\d{2}$/.test(period||'')) return '';return `${nextMonthPeriod(period+'-01')}-15`;}
+function bestObservation(observations,day){return [...(observations||[])].filter(x=>x.date<=day).sort((a,b)=>a.date.localeCompare(b.date)).at(-1)||null;}
+function insertObservation(arr,observation) {const next=[...(arr||[])].filter(x=>x.date!==observation.date);next.push(observation);next.sort((a,b)=>a.date.localeCompare(b.date));return next;}
+function occurrenceId(planId,date){return `${planId}@${date}`;}
+
+function generateRecurring(state,until) {
+  const result=[];
+  if (!isValidDate(until) || until<state.startDate) return result;
+  for(const p of state.plans||[]){
+    if(!p.active || !(Number(p.amount)>0) || !isValidDate(p.startDate)||!Array.isArray(p.days)) continue;
+    const validDays=[...new Set(p.days.map(Number).filter(x=>Number.isInteger(x) && x>=1 && x<=31))];
+    if(!validDays.length) continue;
+    let [y,m]=p.startDate.slice(0,7).split('-').map(Number);
+    const [ey,em]=until.slice(0,7).split('-').map(Number);
+    let maxLoops=0;
+    while(y<ey || (y===ey && m<=em)){
+      if(++maxLoops>2400)break;
+      const dates=[...new Set(validDays.map(day=>`${y}-${String(m).padStart(2,'0')}-${String(Math.min(day,lastDay(y,m))).padStart(2,'0')}`))];
+      for(const date of dates){
+        if(date<p.startDate || date<state.startDate || date>until)continue;
+        const oid=occurrenceId(p.id,date);
+        const override=state.planOverrides?.[oid]||{};
+        result.push({
+          id:oid,date,type:'investment',assetId:p.assetId,
+          amount:Number.isFinite(Number(override.amount)) && override.amount!==undefined ? Number(override.amount):Number(p.amount),
+          source:p.source, feePercent:Number(p.feePercent||0),units:override.units===''?null: (override.units??null),
+          status:override.status||'estimated',label:p.label,planId:p.id,automatic:true
+        });
+      }
+      m++;if(m>12){m=1;y++;}
+    }
+  }
+  return result.sort((a,b)=>a.date.localeCompare(b.date));
+}
+// Future-dated manual movements have an automatic effective DATE, not an
+// automatic bank confirmation. Keeping status='planned' preserves the fact
+// that nobody checked the statement, yet it is accounted for from its date.
+// Date filtering makes this work on reopen after days offline and guarantees
+// that a planned movement is counted exactly once, never reinserted in JSON.
+function allEvents(state,day){
+  return [...(state.movements||[]).filter(e=>
+    e.date>=state.startDate && e.date<=day &&
+    e.status!=='historical' && e.status!=='skipped'),
+    ...generateRecurring(state,day).filter(e=>e.status==='confirmed')]
+    .sort((a,b)=>a.date.localeCompare(b.date));
+}
+function accountEffect(event,id){
+  const amount=Number(event.amount)||0;
+  switch(event.type){
+    case 'income': return event.to===id?amount:0;
+    case 'expense': return event.from===id?-amount:0;
+    case 'transfer': return (event.to===id?amount:0)+(event.from===id?-amount:0);
+    case 'investment': return event.source===id?-amount:0;
+    case 'card_payment': return event.from===id?-amount:0;
+    default:return 0;
+  }
+}
+function accountAt(state,id,date,events){
+  const account=state.accounts.find(x=>x.id===id);
+  if(!account)return null;
+  const ob=bestObservation(account.observations,date);
+  if(!ob)return {id,name:account.name,group:account.group,value:null,asOf:null,estimated:true};
+  const included=new Set(ob.includedEventIds||[]);
+  const delta=events.filter(e=>e.date>ob.date || (e.date===ob.date && !included.has(e.id))).reduce((s,e)=>s+accountEffect(e,id),0);
+  return {id,name:account.name,group:account.group,value:eurRound(Number(ob.amount)+delta),asOf:ob.date,estimated:Math.abs(delta)>0.0001,delta:eurRound(delta)};
+}
+function investmentAt(state,id,date,events){
+  const asset=state.investments.find(x=>x.id===id);
+  if(!asset)return null;
+  const ob=bestObservation(asset.observations,date);
+  const contributions=events.filter(z=>z.type==='investment' && z.assetId===id);
+  const included=new Set(ob?.includedEventIds||[]);
+  const later=contributions.filter(z=>!ob||z.date>ob.date||(z.date===ob.date&&!included.has(z.id)));
+  const addedCapital=contributions.reduce((n,z)=>n+Number(z.amount||0),0);
+  const invested=asset.investedBeforeStart==null?null:eurRound(Number(asset.investedBeforeStart)+addedCapital);
+  let baseValue=null,quantity=null,marketPrice=null,averagePrice=null,costBasis=null,unallocated=0,quote=null;
+  let pendingCost=0;
+  if(ob){
+    if(ob.mode==='units'){
+      let units=Number(ob.units);
+      quantity=Number.isFinite(units)&&units>=0?units:null;
+      const baseQty=quantity;
+      if(asset.kind==='etf'||asset.kind==='fund'){
+        averagePrice=ob.avgPrice==null?null:Number(ob.avgPrice);
+        if(!Number.isFinite(averagePrice) || averagePrice<=0)averagePrice=null;
+        if(baseQty!==null && averagePrice!==null)costBasis=baseQty*averagePrice;
+        // Last market quotation may predate a weekend/holiday inventory by a few days.
+        const feed=bestObservation(asset.marketQuotes,date);
+        if(feed && Number(feed.price)>0 && feed.currency==='EUR' && Date.parse(feed.date)>=Date.parse(ob.date)-864000000)quote=feed;
+        if(!quote && Number(ob.currentMarketPrice)>0){
+          quote={date:ob.date,price:Number(ob.currentMarketPrice),currency:'EUR',source:asset.provider+' (inserito manualmente)',manual:true};
+        }
+        marketPrice=quote?Number(quote.price):(asset.kind==='fund'&&ob.price!==null&&ob.price!==undefined&&Number(ob.price)>0?Number(ob.price):null);
+      }else{
+        if(asset.kind==='pension'){
+          // Official NAV is often published later (Previbank: monthly).
+          // Use latest available price; display its true reference date.
+          const nav=bestObservation(asset.marketQuotes,date);
+          if(nav && Number(nav.price)>0 && nav.currency==='EUR')quote=nav;
+        }
+        marketPrice=quote?Number(quote.price):(ob.price!==null&&ob.price!==undefined&&Number(ob.price)>0?Number(ob.price):null);
+      }
+      for(const z of later){
+        const newUnits=Number(z.units);
+        if(z.units!==null && z.units!==undefined && Number.isFinite(newUnits)&&newUnits>=0){
+          if(quantity!==null)quantity+=newUnits;
+          if((asset.kind==='etf'||asset.kind==='fund') && costBasis!==null)costBasis+=Number(z.amount||0);
+        }else{
+          unallocated+=Number(z.amount||0)*(1-Number(z.feePercent||0)/100);
+          pendingCost+=Number(z.amount||0);
+        }
+      }
+      if(asset.kind==='etf'||asset.kind==='fund'){
+        if(quantity!==null&&marketPrice!==null){
+          baseValue=quantity*marketPrice;
+          if(costBasis!==null){costBasis+=pendingCost;averagePrice=quantity>0?(costBasis-pendingCost)/quantity:averagePrice;}
+        }
+      }else if(quantity!==null&&marketPrice!==null){baseValue=quantity*marketPrice;}
+    }else{
+      baseValue=Number(ob.value)||0;
+      for(const z of later){unallocated+=Number(z.amount||0)*(1-Number(z.feePercent||0)/100);pendingCost+=Number(z.amount||0);}
+      // Quote feeds do not change a value-only position without share count.
+      // This prevents showing invented portfolio values.
+    }
+  }
+  // A pension NAV is public even when the owner's position was entered only
+  // as a euro amount or has not yet been entered. Display the NAV WITHOUT
+  // misrepresenting it as the owner's total holdings.
+  if(asset.kind==='pension' && marketPrice===null){
+    const publicNAV=bestObservation(asset.marketQuotes||[],date);
+    if(publicNAV && publicNAV.currency==='EUR' && Number(publicNAV.price)>0){
+      quote=publicNAV;
+      marketPrice=Number(publicNAV.price);
+    }
+  }
+  const value=baseValue===null?null:eurRound(baseValue+unallocated);
+  const gainFromContributions=value!==null&&invested!==null?eurRound(value-invested):null;
+  const gainFromAverage=value!==null&&costBasis!==null?eurRound(value-costBasis):null;
+  const calculatedGain=gainFromAverage!==null?gainFromAverage:gainFromContributions;
+  const calcSource=gainFromAverage!==null?'costo medio':'capitale versato';
+  const reportedGain=ob?.reportedGain!==null && ob?.reportedGain!==undefined && Number.isFinite(Number(ob.reportedGain))?eurRound(Number(ob.reportedGain)):null;
+  const reportedGainPct=ob?.reportedGainPct!==null&&ob?.reportedGainPct!==undefined&&Number.isFinite(Number(ob.reportedGainPct))?Number(ob.reportedGainPct):null;
+  // An external market quotation (even same-day) supersedes a manually copied
+  // broker return. Keep the broker figure for reconciliation, not as net worth.
+  const brokerCurrent=reportedGain!==null && later.length===0 && !quote;
+  const gain=brokerCurrent?reportedGain:calculatedGain;
+  const gainBase=gainFromAverage!==null?costBasis:invested;
+  const gainPct=brokerCurrent?reportedGainPct:(gain!==null&&gainBase>0?gain/gainBase*100:null);
+  const discrepancy=(reportedGain!==null && calculatedGain!==null && (!quote||quote.date===ob?.date))?eurRound(reportedGain-calculatedGain):null;
+  const estimatedEvents=contributions.some(z=>z.status!=='confirmed');
+  const currentDate=quote?.date||ob?.date||null;
+  const quoteAge=currentDate?Math.floor((Date.parse(`${date}T12:00:00Z`)-Date.parse(`${currentDate}T12:00:00Z`))/86400000):null;
+  return {
+    id,name:asset.name,provider:asset.provider,kind:asset.kind,isin:asset.isin,ticker:asset.ticker||'',
+    value,invested,gain,gainPct,calculatedGain,gainFromContributions,gainFromAverage,calcSource,reportedGain,
+    gainSource:brokerCurrent?'intermediary':gainFromAverage!==null?'average-cost':'calculated',reportedGainPct,
+    reportedGainAsOf:reportedGain!==null?ob.date:null,discrepancy,
+    asOf:currentDate,positionAsOf:ob?.date||null,mode:ob?.mode||null,quantity,marketPrice,averagePrice,
+    costBasis:costBasis===null?null:eurRound(costBasis),quoteSource:quote?.source||null,quoteCheckedAt:quote?.checkedAt||null,
+    quoteAge,quoteStale:(asset.kind==='etf'||asset.kind==='fund'||asset.kind==='pension')&&
+      (quoteAge===null||quoteAge>(asset.id==='previbank'?65:asset.kind==='pension'?24:4)),
+    unallocated:eurRound(unallocated),automaticUnconfirmed:estimatedEvents,
+    estimated:unallocated>0.001||estimatedEvents||
+      (asset.kind==='etf'||asset.kind==='fund'||asset.kind==='pension')&&ob?.mode==='units'&&
+      (!quote||quoteAge>(asset.id==='previbank'?65:asset.kind==='pension'?24:4)),
+    postStartContributions:eurRound(addedCapital),contributions
+  };
+}
+function cardAt(state,date,events){
+  const due=state.card?.openingDebt;
+  const initial=due===null || due===undefined?null:Number(due)||0;
+  const purchases=events.filter(e=>e.type==='card_purchase');
+  const payments=events.filter(e=>e.type==='card_payment');
+  const delta=purchases.reduce((s,e)=>s+Number(e.amount||0),0)-payments.reduce((s,e)=>s+Number(e.amount||0),0);
+  let outstanding=initial===null?null:eurRound(initial+delta);
+  const byPeriod={};
+  if(initial!==null && initial!==0)byPeriod[state.card.openingPeriod||'2026-10']=initial;
+  for(const e of purchases){const p=monthKey(e.date);byPeriod[p]=eurRound((byPeriod[p]||0)+Number(e.amount||0));}
+  for(const e of payments){
+    const period=e.period||monthKey(e.date);byPeriod[period]=eurRound((byPeriod[period]||0)-Number(e.amount||0));
+  }
+  return {value:outstanding,asOf:date,byPeriod, purchases, payments, unknownOpening:initial===null};
+}
+function computeAt(state,day=todayRome()){
+  if(!isValidDate(day)||day<state.startDate)throw new Error('Data precedente alla data zero');
+  const events=allEvents(state,day);
+  const accounts=Object.fromEntries(state.accounts.map(a=>[a.id,accountAt(state,a.id,day,events)]));
+  const assets=Object.fromEntries(state.investments.map(a=>[a.id,investmentAt(state,a.id,day,events)]));
+  const card=cardAt(state,day,events);
+  const personalCash=['allianz','tr','cash'].reduce((s,id)=>s+(accounts[id]?.value||0),0);
+  const investments=state.investments.filter(a=>a.kind!=='pension').reduce((s,a)=>s+(assets[a.id]?.value||0),0);
+  const retirement=state.investments.filter(a=>a.kind==='pension').reduce((s,a)=>s+(assets[a.id]?.value||0),0);
+  const personalNet=eurRound(personalCash+investments+retirement-(card.value||0));
+  const shared=accounts.sella?.value;
+  const missing=[...state.accounts.filter(a=>a.group==='personal' && accounts[a.id].value===null).map(a=>a.name), ...state.investments.filter(a=>assets[a.id].value===null).map(a=>a.name), ...(card.value===null?['Debito iniziale carta di credito']:[])];
+  const personalKnown=missing.length===0;
+  const planned=generateRecurring(state,day).filter(e=>e.status==='estimated');
+  const partnerContrib=events.filter(e=>e.type==='income'&&e.to==='sella'&&e.origin==='partner').reduce((s,e)=>s+Number(e.amount||0),0);
+  const meContrib=events.filter(e=>e.type==='transfer'&&e.to==='sella'&&e.from!=='sella').reduce((s,e)=>s+Number(e.amount||0),0);
+  return {day,accounts,assets,card,events,personalCash:eurRound(personalCash),investments:eurRound(investments),retirement:eurRound(retirement),personalNet,personalKnown,missing,shared,observedCombined:shared===null?null:eurRound(personalNet+shared),planned,meContrib:eurRound(meContrib),partnerContrib:eurRound(partnerContrib)};
+}
+function eachDate(from,to,max=36525){const out=[];const dt=new Date(`${from}T12:00:00Z`);const end=new Date(`${to}T12:00:00Z`);if(dt>end)return out;for(let i=0;i<max && dt<=end;i++,dt.setUTCDate(dt.getUTCDate()+1)){out.push(dt.toISOString().slice(0,10));}return out;}
+function history(state,date=todayRome()){return eachDate(state.startDate,date).map(day=>{const x=computeAt(state,day);return {date:day,net:x.personalNet,known:x.personalKnown,shared:x.shared};});}
+function assertValidState(state){
+  if(!state||state.schemaVersion!==SCHEMA_VERSION||state.startDate!==START_DATE||!Array.isArray(state.accounts)||!Array.isArray(state.investments)||!Array.isArray(state.plans)||!Array.isArray(state.movements)) throw new Error('Il file non è un backup My Wealth compatibile.');
+  for(const a of state.accounts) for(const o of (a.observations||[]))if(!isValidDate(o.date)||!Number.isFinite(Number(o.amount)))throw new Error('Saldo del backup non valido.');
+  for(const a of state.investments)for(const o of a.observations||[])if(!isValidDate(o.date))throw new Error('Data di posizione non valida.');
+  return true;
+}
+function fmtMoney(value){return value===null || value===undefined?'—':new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(value);}
+function fmtDate(date){if(!date)return '—';return new Intl.DateTimeFormat('it-IT',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(`${date}T12:00:00Z`));}
+
+
+const APP_VERSION='2.2.1';
+const UPDATE_REPO_KEY='mywealth-github-update-repo';
+let updateRepository=localStorage.getItem(UPDATE_REPO_KEY)||'turcoalex1999-sketch/my-wealth-updates';
+let updateInfo=null;
+let updateLoading=false;
+const KEY='my-wealth-local-v1';
+const e = v => String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=fmtMoney;
+const navMoney=n=>n==null?'—':new Intl.NumberFormat('it-IT',
+  {style:'currency',currency:'EUR',minimumFractionDigits:3,maximumFractionDigits:6}).format(n);
+const fmtNum = v => v===null||v===undefined?'—':new Intl.NumberFormat('it-IT',{maximumFractionDigits:3}).format(v);
+const positive = v => Number.isFinite(v) && v>0;
+const newId = () => typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `mw-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+const dNow=()=>{const t=todayRome();return t<START_DATE?START_DATE:t};
+const safeNum=v=>{if(v===null||v===undefined||String(v).trim()==='')return null; const n=Number(String(v).replace(',','.')); return Number.isFinite(n)?n:null;};
+const forField = (fd,name) => String(fd.get(name)??'').trim();
+const mustMoney = (fd,key) => {const n=safeNum(fd.get(key));if(n===null||n<0)throw Error('Inserisci un importo valido (maggiore o uguale a zero).');return n;};
+const mustDate= (fd,key) =>{const x=forField(fd,key);if(!isValidDate(x)||x<START_DATE||x>dNow())throw Error(`Scegli una data tra il ${fmtDate(START_DATE)} e oggi.`);return x;};
+const mustAnyDate=(fd,key)=>{const x=forField(fd,key);if(!isValidDate(x))throw Error('Inserisci una data valida, anche passata o futura.');return x;};
+const statusForDate=date=>date<START_DATE?'historical':date>dNow()?'planned':'confirmed';
+const mustStart= (fd,key) =>{const x=forField(fd,key);if(!isValidDate(x)||x<START_DATE)throw Error('Data di inizio non valida.');return x;};
+const load = () => {try {const data=JSON.parse(localStorage.getItem(KEY)||'null');if(data&&assertValidState(data)){const upgraded=normalizeState(data);localStorage.setItem(KEY,JSON.stringify(upgraded));return upgraded;}}catch(err){console.warn('Caricamento non riuscito:',err);}return blankState();};
+let state=load();let view='home';let chartRange='90';let movementFilter='all';let planOnly='all';let modalSave=null;let toastHandle;
+
+// My Wealth 1.9.1: persistent local archive managed by the Windows localhost process.
+// Fixed Documents folder is independent of the HTML/ZIP folder. Browser cache is
+// recovery-only; Save writes the archive and rotating disk backups.
+const FILE_DIRTY_KEY='mywealth-file-dirty-v13';
+const FILE_NAME_KEY='mywealth-file-name-v13';
+const FILE_TIME_KEY='mywealth-file-time-v13';
+const FILE_HASH_KEY='mywealth-file-hash-v13';
+let archiveHandle=null;
+let archiveName=localStorage.getItem(FILE_NAME_KEY)||'';
+let archiveSavedAt=localStorage.getItem(FILE_TIME_KEY)||'';
+let saveDirty=localStorage.getItem(FILE_DIRTY_KEY)==='yes';
+let localServerReady=false,localServerRevision=null,localServerPath='',localServerBackups=0;
+const archiveTypes=[{description:'Archivio My Wealth (.json)',accept:{'application/json':['.json']}}];
+function contentHash(str){let h=2166136261;for(let i=0;i<str.length;i++)h=Math.imul(h^str.charCodeAt(i),16777619);return String(h>>>0);}
+function archiveStatus(){
+  if(saveDirty)return {txt:'● Modifiche da salvare su file',tone:'dirty'};
+  if(archiveName && archiveSavedAt){
+    let hh;try{hh=new Intl.DateTimeFormat('it-IT',{hour:'2-digit',minute:'2-digit'}).format(new Date(archiveSavedAt));}catch{hh='ultima sessione';}
+    return {txt:`✓ Salvato su PC alle ${hh}`,tone:'saved'};
+  }
+  return {txt:'Dati ancora da salvare',tone:'unsaved'};
+}
+function updateArchiveStatus(){
+  const o=archiveStatus();
+  for(const el of document.querySelectorAll('[data-save-indicator]')){el.textContent=o.txt;el.className='save-indicator '+o.tone;}
+  for(const el of document.querySelectorAll('[data-save-file]')){el.textContent=localServerPath||archiveName||'Non ancora creato';}
+  for(const el of document.querySelectorAll('[data-save-time]')){el.textContent=archiveSavedAt?new Date(archiveSavedAt).toLocaleString('it-IT'):'Nessun salvataggio su file';}
+  for(const el of document.querySelectorAll('[data-file-api]')){el.textContent=localServerReady?'Archivio fisso e backup su PC':typeof window.showSaveFilePicker==='function'?'File manuale (modalità emergenza)':'Non disponibile';}
+  for(const el of document.querySelectorAll('[data-backup-count]'))el.textContent=localServerReady?String(localServerBackups):'—';
+}
+function setCachedState(savedToFile=false){
+  localStorage.setItem(KEY,JSON.stringify(state));
+  saveDirty=!savedToFile;
+  localStorage.setItem(FILE_DIRTY_KEY,saveDirty?'yes':'no');
+}
+async function apiJSON(route,options={}){
+  const response=await fetch(route,{cache:'no-store',...options});
+  const body=await response.json().catch(()=>({error:'Risposta non valida dal server locale'}));
+  if(!response.ok){const err=new Error(body.error||`Errore HTTP ${response.status}`);err.status=response.status;throw err;}
+  return body;
+}
+async function initializeLocalArchive(){
+  if(location.protocol!=='http:'||location.hostname!=='127.0.0.1')return;
+  try{
+    const status=await apiJSON('/api/archive/status');
+    if(!status.ok)return;
+    localServerReady=true;localServerPath=status.path||'';localServerBackups=status.backups||0;
+    if(status.exists){
+      const payload=await apiJSON('/api/archive/load');
+      const rawState=JSON.parse(payload.dataJson);
+      const incoming=normalizeState(rawState);
+      const needsArchiveSave=JSON.stringify(incoming)!==JSON.stringify(rawState);
+      localServerRevision=payload.revision;
+      if(saveDirty && JSON.stringify(incoming)!==JSON.stringify(state)){
+        // Never discard an unsaved browser session on startup.
+        const chooseDisk=confirm('My Wealth ha trovato un archivio sul PC e modifiche non ancora salvate nel browser.\n\nPremi OK per caricare l’archivio dal disco oppure Annulla per conservare le modifiche in questa sessione e salvarle manualmente.');
+        if(chooseDisk){state=incoming;setCachedState(!needsArchiveSave);}
+      }else{state=incoming;setCachedState(!needsArchiveSave);}
+      archiveName='MyWealth_Dati.json';archiveSavedAt=payload.savedAt;
+    }else{
+      // If the canonical file was moved/deleted, recover from a recent backup.
+      if(status.recoverable && !saveDirty){
+        try{
+          const recovery=await apiJSON('/api/archive/recovery');
+          if(confirm('Il file principale non è più nei Documenti, ma esiste una copia di sicurezza.\n\nPremi OK per recuperarla, poi premi Salva per ricreare l’archivio principale.')){
+            state=normalizeState(JSON.parse(recovery.dataJson));setCachedState(false);
+            notify('Copia di sicurezza recuperata: premi Salva.');
+          }
+        }catch(err){console.warn('Recupero backup:',err);}
+      }
+      // Old 1.7/1.8 browser sessions and their saved JSON are not discarded.
+      if(archiveName || JSON.stringify(state)!==JSON.stringify(blankState())){
+        saveDirty=true;localStorage.setItem(FILE_DIRTY_KEY,'yes');
+      }
+      archiveName='';archiveSavedAt='';localServerRevision=null;
+    }
+    render();
+  }catch(err){console.warn('Archivio locale:',err);notify('Archivio locale non disponibile. Salva un backup JSON.');}
+}
+async function saveArchive(){
+  if(localServerReady){
+    const send=async force=>apiJSON('/api/archive/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({dataJson:JSON.stringify(state),expectedRevision:localServerRevision,force:!!force})});
+    try{
+      let answer;
+      try{answer=await send(false);}catch(err){
+        if(err.status!==409)throw err;
+        if(!confirm('L’archivio su disco è cambiato da quando l’hai aperto.\n\nVuoi sostituirlo con questa sessione? My Wealth conserverà una copia di sicurezza della versione precedente. Se non sei sicuro, premi Annulla e apri il file aggiornato.'))return;
+        answer=await send(true);
+      }
+      localServerRevision=answer.revision;
+      localServerPath=answer.path||localServerPath;
+      localServerBackups=answer.backups||0;
+      archiveName='MyWealth_Dati.json';archiveSavedAt=answer.savedAt;
+      localStorage.setItem(FILE_NAME_KEY,archiveName);
+      localStorage.setItem(FILE_TIME_KEY,archiveSavedAt);
+      localStorage.setItem(FILE_HASH_KEY,contentHash(JSON.stringify(state,null,2)));
+      setCachedState(true);updateArchiveStatus();
+      notify('Salvato sul PC con copia di sicurezza.');
+    }catch(err){alert('Salvataggio non riuscito: '+(err?.message||err)+'\n\nLe modifiche restano nel browser finché non cancelli i dati. Esporta anche un backup da Impostazioni.');}
+    return;
+  }
+  // Older file:// mode is supported only as a recovery fallback.
+  if(typeof window.showSaveFilePicker!=='function'){
+    alert('Apri My Wealth tramite AVVIA_MY_WEALTH.bat per salvare stabilmente nei Documenti. Puoi sempre esportare una copia JSON dalle Impostazioni.');return;
+  }
+  try{
+    let handle=archiveHandle;
+    if(!handle)handle=await window.showSaveFilePicker({suggestedName:'MyWealth_Dati.json',id:'mywealth-data',types:archiveTypes});
+    else if(handle.queryPermission){let permission=await handle.queryPermission({mode:'readwrite'});if(permission!=='granted'&&handle.requestPermission)permission=await handle.requestPermission({mode:'readwrite'});if(permission!=='granted')throw Error('Seleziona nuovamente il file con Apri dati.');}
+    const snapshot=JSON.stringify(state,null,2);
+    const writable=await handle.createWritable();await writable.write(snapshot);await writable.close();
+    archiveHandle=handle;archiveName=handle.name;archiveSavedAt=new Date().toISOString();
+    localStorage.setItem(FILE_NAME_KEY,archiveName);localStorage.setItem(FILE_TIME_KEY,archiveSavedAt);
+    setCachedState(true);updateArchiveStatus();notify(`Backup scritto: ${archiveName}`);
+  }catch(err){if(err?.name!=='AbortError')alert('Salvataggio manuale non riuscito: '+(err?.message||err));}
+}
+async function loadArchive(){
+  // The user may have MOVED/RENAMED the JSON: choosing its new location imports
+  // it into the current session. After Save it is written to the fixed archive.
+  if(typeof window.showOpenFilePicker!=='function'){openImport();return;}
+  try{
+    const chosen=await window.showOpenFilePicker({id:'mywealth-data',multiple:false,types:archiveTypes});
+    if(!chosen?.length)return;
+    const h=chosen[0],file=await h.getFile();
+    if(file.size>10000000)throw Error('Archivio troppo grande (max 10 MB)');
+    const raw=await file.text(),parsed=JSON.parse(raw);assertValidState(parsed);
+    if(JSON.stringify(state)!==JSON.stringify(parsed)){
+      if(!confirm('Importare questo archivio dalla nuova posizione? La sessione corrente verrà sostituita. Se hai modifiche non salvate, prima esporta un backup.'))return;
+    }
+    state=normalizeState(parsed);
+    if(!localServerReady)archiveHandle=h;
+    setCachedState(false);render();
+    notify('Archivio importato. Premi Salva per aggiornare la copia stabile nei Documenti.');
+  }catch(err){if(err?.name!=='AbortError')alert('Impossibile aprire il file: '+(err?.message||err));}
+}
+async function recoverLocalBackup(){
+  if(!localServerReady){alert('Apri l’app tramite AVVIA_MY_WEALTH.bat.');return;}
+  try{
+    const backup=await apiJSON('/api/archive/recovery');
+    if(!confirm('Ripristinare la copia del '+new Date(backup.savedAt).toLocaleString('it-IT')+'? I dati della sessione verranno sostituiti. Esporta prima un backup se necessario.'))return;
+    state=normalizeState(JSON.parse(backup.dataJson));setCachedState(false);render();
+    notify('Copia recuperata. Premi Salva per registrarla nell’archivio principale.');
+  }catch(err){alert('Recupero non riuscito: '+err.message);}
+}
+function forgetFileLink(){
+  if(localServerReady){alert('L’archivio principale è fisso nei Documenti di Windows. Per importare un JSON spostato usa Apri dati.');return;}
+  archiveHandle=null;archiveName='';archiveSavedAt='';saveDirty=true;
+  localStorage.removeItem(FILE_NAME_KEY);localStorage.removeItem(FILE_TIME_KEY);localStorage.setItem(FILE_DIRTY_KEY,'yes');render();
+}
+window.addEventListener('beforeunload',evt=>{if(saveDirty){evt.preventDefault();evt.returnValue='';}});
+
+function persist(){try{setCachedState(false);}catch(err){alert('Impossibile mantenere il salvataggio provvisorio nel browser. Premi Salva per scrivere direttamente nell’archivio sul PC.');console.warn(err);}render();}
+// My Wealth 1.9.1: public quotes via local Windows PowerShell proxy (same origin).
+// No user balances, holdings or passwords are sent out; only fixed public URLs.
+const QUOTE_RETRY_MS=30*60*1000;
+const SUPPORTED_PRICE_IDS=['asia','clean','space','jpm','artificial','previbank','allianz-pensione'];
+const ETF_TICKER={asia:'AASI.MI',clean:'INRE.PA',space:'JEDI.MI'};
+const ISIN_ETF={asia:'LU1681044480',clean:'IE000U58J0M1',space:'IE000YU9K6K2'};
+let quoteLastRun=0,quoteInProgress=false,quoteResults={};
+function marketBadge(){
+  const ok=SUPPORTED_PRICE_IDS.filter(id=>quoteResults[id]?.ok===true).length;
+  const errors=SUPPORTED_PRICE_IDS.filter(id=>quoteResults[id]?.ok===false).length;
+  const badgeClass=errors?'orange':ok?'green':'blue';
+  return `<span class="token ${badgeClass}">${quoteInProgress?'Ricerca in corso...':`${ok}/7 fonti disponibili${errors?' · '+errors+' non disponibili':''}`}</span>`;
+}
+function parseEuropeanNumber(str){
+  const cleaned=String(str||'').replace(/[\u00a0\s€]/g,'').replace(/\.(?=\d{3}(?:\D|$))/g,'').replace(',','.');
+  const value=Number(cleaned);return Number.isFinite(value)?value:null;
+}
+function isoFromDMY(d){
+  const m=String(d||'').match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/);
+  if(!m)return null;
+  const yr=m[3].length===2?'20'+m[3]:m[3];
+  const val=`${yr}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;
+  return isValidDate(val)?val:null;
+}
+function isoFromUnix(ts){
+  const d=new Date(Number(ts)*1000);
+  return Number.isFinite(d.getTime())?new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(d):null;
+}
+function packQuote(asset,price,date,source,metadata={}){
+  if(!Number.isFinite(price)||price<=0||price>1000000)throw Error('Prezzo non valido dalla fonte '+source);
+  if(!date||!isValidDate(date)||date>dNow())throw Error('Data di mercato assente o futura: '+source);
+  // The last valid NAV may predate the first portfolio snapshot (weekends/settlement).
+  const staleDays=Math.floor((Date.parse(dNow())-Date.parse(date))/86400000);
+  if(staleDays>(asset.id==='previbank'?380:asset.id==='allianz-pensione'?160:10))throw Error('Prezzo vecchio di '+staleDays+' giorni ('+source+')');
+  return {date,price:Number(price),currency:'EUR',ticker:asset.ticker||'',source,checkedAt:new Date().toISOString(),manual:false,...metadata};
+}
+async function proxyRead(assetId,source){
+  if(!SUPPORTED_PRICE_IDS.includes(assetId))throw Error('Asset non autorizzato');
+  if(location.protocol==='file:')throw Error('Apri l’app con AVVIA_MY_WEALTH.bat, non con il file HTML');
+  const controller=new AbortController();const tm=setTimeout(()=>controller.abort(),18000);
+  try{
+    const r=await fetch(`/api/public-source?asset=${encodeURIComponent(assetId)}&source=${encodeURIComponent(source)}`,{cache:'no-store',signal:controller.signal});
+    const raw=await r.text();
+    if(!r.ok)throw Error(raw.slice(0,180)||'HTTP '+r.status);
+    if(raw.length>4000000)throw Error('Risposta troppo grande');
+    return raw;
+  }finally{clearTimeout(tm);}
+}
+function quoteFromYahoo(raw,asset){
+  const data=JSON.parse(raw);const r=data?.chart?.result?.[0];
+  if(!r||data.chart?.error)throw Error('Yahoo: risposta senza quotazione');
+  const meta=r.meta||{};
+  if(String(meta.currency||'').toUpperCase()!=='EUR')throw Error('Yahoo: valuta diversa da EUR');
+  if(String(meta.symbol||'').toUpperCase()!==ETF_TICKER[asset.id])throw Error('Yahoo: ticker diverso da quello richiesto');
+  let price=Number(meta.regularMarketPrice),time=Number(meta.regularMarketTime);
+  const close=r.indicators?.quote?.[0]?.close||[];const ts=r.timestamp||[];
+  for(let i=ts.length-1;i>=0;i--){
+    const v=Number(close[i]);const t=Number(ts[i]);
+    if(Number.isFinite(v)&&v>0&&Number.isFinite(t)&&t>time){price=v;time=t;break;}
+  }
+  return packQuote(asset,price,isoFromUnix(time),'Yahoo Finance · '+ETF_TICKER[asset.id],{ticker:ETF_TICKER[asset.id],timeVerified:true});
+}
+function quoteFromBorsa(raw,asset){
+  const doc=new DOMParser().parseFromString(raw,'text/html');
+  const t=(doc.body?.textContent||'').replace(/[\u00a0\n\r\t]+/g,' ').replace(/\s+/g,' ');
+  const isin=ISIN_ETF[asset.id];
+  if(!raw.includes(isin))throw Error('Borsa Italiana: ISIN non verificato');
+  const dateMatch=t.match(/Ultimo Contratto\s*:?\s*(\d{1,2}\/\d{1,2}\/\d{2,4})/i)
+      ||t.match(/Prezzo di riferimento\s*[\d.,]+\s*[-–]\s*(\d{1,2}\/\d{1,2}\/\d{2,4})/i);
+  const date=isoFromDMY(dateMatch?.[1]);
+  // Display price is the headline quote before 'Fase:'; during closed session
+  // Borsa also publishes an explicit close, preferred to intraday headlines.
+  const close=t.match(/Prezzo di Chiusura\s*([\d.,]+)(?:\s|Numero|$)/i);
+  const headline=t.slice(0,Math.max(t.indexOf('Dati Mercato'),0)||1100);
+  let hero=headline.match(/(?:^|\s)(\d{1,4}[,.]\d{2,6})\s*[+−-]\s*\d{1,3}[,.]\d{1,4}\s*%\s*Fase\s*:/i);
+  if(!hero)hero=headline.match(/(?:^|\s)(\d{1,4}[,.]\d{2,6})\s*[+−-]\s*\d{1,3}[,.]\d{1,4}\s*%/i);
+  const p=parseEuropeanNumber((close && !/n\.d\./i.test(close[1]))?close[1]:hero?.[1]);
+  if(p===null)throw Error('Borsa Italiana: non trovo il prezzo di riferimento/chiusura');
+  return packQuote(asset,p,date,'Borsa Italiana · '+ETF_TICKER[asset.id],{ticker:ETF_TICKER[asset.id],timeVerified:true});
+}
+function quoteFromGoogle(raw,asset){
+  const doc=new DOMParser().parseFromString(raw,'text/html');
+  const d=doc.querySelector('.YMlKec.fxKbKc')||doc.querySelector('[data-last-price]');
+  const price=parseEuropeanNumber(d?.getAttribute('data-last-price')||d?.textContent);
+  // Google HTML lacks a dependable date marker. Do NOT masquerade as a fully
+  // verified live quote; it is marked as a provisional retrieval-date estimate.
+  const text=(doc.body?.textContent||'').replace(/\s+/g,' ');
+  const isin=ISIN_ETF[asset.id];
+  if(!raw.includes(isin) && !text.includes(ETF_TICKER[asset.id].split('.')[0]))throw Error('Google: strumento non verificato');
+  if(price===null)throw Error('Google Finance: prezzo non trovato');
+  return packQuote(asset,price,dNow(),'Google Finance · data rilevazione NON certificata', {ticker:ETF_TICKER[asset.id],timeVerified:false,provisional:true});
+}
+function quoteFromFida(raw,asset){
+  const doc=new DOMParser().parseFromString(raw,'text/html');
+  const t=(doc.body?.textContent||'').replace(/[\u00a0\n\r\t]+/g,' ').replace(/\s+/g,' ');
+  const code=asset.id==='jpm'?'DARAG28':'DALARTI';
+  const fragment=asset.id==='jpm'?'JPM Global Dividend':'ALLIANZGI Artificial';
+  if(!raw.includes(code) && !t.toLowerCase().includes(fragment.toLowerCase()))throw Error('FIDA: codice prodotto non confermato');
+  const m=t.match(/Ultima quotazione\s*:?\s*([\d.,]+)\s*€?\s*\((\d{1,2}\/\d{1,2}\/\d{4})\)/i)
+     ||t.match(/Ultima quotazione\s*:?\s*([\d.,]+)\s*€[^\d]{0,10}(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  if(!m)throw Error('FIDA: ultima quota o data non leggibili (possibile accesso protetto)');
+  const q=packQuote(asset,parseEuropeanNumber(m[1]),isoFromDMY(m[2]),'FIDA · '+code,{fundProductCode:code,timeVerified:true});
+  return q;
+}
+// Darta Saving publishes one unclassified Unit Linked NAV per specific
+// internally-managed fund (AG28 and AC18). The separate Challenge Private
+// page publishes six contract classes A-F: NEVER choose one at random.
+function quoteFromDartaUnitLinked(raw,asset){
+  const doc=new DOMParser().parseFromString(raw,'text/html');
+  const body=doc.body;
+  if(!body)throw Error('Allianz Darta: pagina vuota');
+  const plain=body.textContent.replace(/[\u00a0\n\r\t]+/g,' ').replace(/\s+/g,' ');
+  const tableDates=[];
+  for(const row of doc.querySelectorAll('tr')){
+    const cells=[...row.querySelectorAll('th,td')].map(z=>z.textContent.replace(/\s+/g,' ').trim());
+    if(cells[0]?.toLowerCase()==='nome fondo'){
+      for(const val of cells.slice(1)){
+        const match=val.match(/(?:^|\s)(\d{1,2}\/\d{1,2}\/\d{2,4})(?:\s|$)/);
+        if(match)tableDates.push(match[1]);
+      }
+      break;
+    }
+  }
+  const matchDate=plain.match(/Nome Fondo\s*(\d{1,2}\/\d{1,2}\/\d{2,4})/i);
+  const date=isoFromDMY(tableDates[0]||matchDate?.[1]);
+  if(!date)throw Error('Allianz Darta: data di valorizzazione non leggibile');
+  const product=asset.id==='jpm'?{
+    name:'XCLASSIC JPM Global Dividend',code:'DARAG28',ref:'AG28'
+  }:{name:'XTREND ALLIANZGI Artificial',code:'DALARTI',ref:'AC18'};
+  const hits=[];
+  for(const row of doc.querySelectorAll('tr')){
+    const cells=[...row.querySelectorAll('th,td')].map(z=>z.textContent.replace(/\u00a0/g,' ').replace(/\s+/g,' ').trim());
+    // EXACT match: ignore "Hdg", "Classe A" and names differing by one letter.
+    if(cells[0]?.toLocaleLowerCase('en-US')!==product.name.toLocaleLowerCase('en-US'))continue;
+    const price=parseEuropeanNumber(cells[1]);
+    if(price!==null)hits.push(price);
+  }
+  if(hits.length!==1)throw Error('Allianz Darta: fondo '+product.ref+' assente o non univoco nella pagina Unit Linked');
+  return packQuote(asset,hits[0],date,'Allianz Darta · fondo '+product.ref+' (Unit Linked)',{
+    fundProductCode:product.code,officialFundCode:product.ref,sourceType:'official-darta-unitlinked',
+    officialFundName:product.name,timeVerified:true,provisional:false
+  });
+}
+function quotesFromDarta(raw,asset){
+  const doc=new DOMParser().parseFromString(raw,'text/html');
+  const tr=Array.from(doc.querySelectorAll('tr'));
+  const plain=(doc.body?.textContent||'').replace(/[\u00a0\n\r\t]+/g,' ').replace(/\s+/g,' ');
+  const dateMatch=plain.match(/Nome Fondo\s*(\d{1,2}\/\d{1,2}\/\d{2,4})/i);
+  const date=isoFromDMY(dateMatch?.[1]);
+  const label=asset.id==='jpm'?'XCLASSIC JPM Global Dividend':'XTREND ALLIANZGI Artificial';
+  const re=new RegExp('^'+label.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+' Classe ([A-F])$','i');
+  const quotes=[];
+  for(const row of tr){
+    const cells=Array.from(row.querySelectorAll('th,td')).map(z=>z.textContent.trim().replace(/\s+/g,' '));
+    if(cells.length<2)continue;
+    const name=cells[0].replace(/\u00a0/g,' ').trim();
+    const m=name.match(re);
+    if(!m)continue;
+    const price=parseEuropeanNumber(cells[1]);
+    if(price!==null)quotes.push({class:m[1].toUpperCase(),price});
+  }
+  if(!date||quotes.length===0)throw Error('Allianz Darta: data o classi non disponibili');
+  const latest=asset.observations?.at(-1);
+  const entered=latest?.mode==='units'?Number(latest.price||0):0;
+  // Auto-identify share class ONLY if the person has entered the real class NAV
+  // from the exact same day. Otherwise using A/B/C/D/E/F would be guesswork.
+  const hits=latest?.date===date&&entered>0?quotes.filter(q=>Math.abs(q.price-entered)<0.0005):[];
+  if(hits.length!==1)throw Error('Allianz Darta: '+quotes.length+' classi di quota diverse; confronto automatico non univoco. Serve una quotazione FIDA per il prodotto esatto o una quota Allianz della stessa data.');
+  return packQuote(asset,hits[0].price,date,'Allianz Darta · classe '+hits[0].class,{fundClass:hits[0].class,timeVerified:true});
+}
+
+// Public pension NAV parsers. They never authenticate to client areas.
+const PENSION_LINES=[
+  ['','Da configurare · non usare quotazioni di altre linee'],
+  ['azionaria','Linea Azionaria'],
+  ['bilanciata','Linea Bilanciata'],
+  ['obbligazionaria-breve','Linea Obbligazionaria Breve Termine'],
+  ['obbligazionaria-lungo','Linea Obbligazionaria Lungo Termine'],
+  ['flessibile','Linea Flessibile con garanzia'],
+  ['multiasset','Linea Multiasset'],
+  ['life-cycle','Percorso Life Cycle / più linee · solo controvalore manuale']
+];
+function strippedPublicHTML(raw){
+  return String(raw||'').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,' ')
+    .replace(/<[^>]+>/g,' ').replace(/&nbsp;|&#160;/gi,' ')
+    .replace(/&euro;|&#8364;/gi,'€').replace(/&quot;/gi,'"')
+    .replace(/&rsquo;|&#8217;/gi,'’').replace(/&amp;/gi,'&')
+    .replace(/\s+/g,' ').trim();
+}
+const IT_MONTHS=['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+function monthFinalISO(name,year){
+  const month=IT_MONTHS.indexOf(String(name).toLowerCase())+1;
+  if(!month||!/^20\d{2}$/.test(String(year)))return null;
+  return `${year}-${String(month).padStart(2,'0')}-${lastDay(Number(year),month)}`;
+}
+function quoteFromPrevibank(raw,asset){
+  const text=strippedPublicHTML(raw);
+  // The index is chronologically ordered. Prefer the most recently published
+  // article whose summary actually contains the Finanziario NAV.
+  const heading=/Andamento\s+Compart[io][\s\S]{0,160}?\b(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)\s+(20\d{2})/gi;
+  const candidates=[];let h;
+  while((h=heading.exec(text))!==null){
+    const date=monthFinalISO(h[1],h[2]);if(!date||date>dNow())continue;
+    const portion=text.slice(h.index,Math.min(text.length,h.index+1250));
+    const m=portion.match(/Comparto\s*[“"']?\s*Finanziario\b[\s\S]{0,480}?\bvalore\s+(?:della\s+)?quota\s+pari\s+a\s*€?\s*€?\s*(\d{1,4}(?:[.,]\d{1,6})?)/i);
+    if(!m)continue;
+    const price=parseEuropeanNumber(m[1]);
+    if(Number.isFinite(price)&&price>0&&price<500)candidates.push({date,price});
+  }
+  candidates.sort((a,b)=>b.date.localeCompare(a.date));
+  if(!candidates.length)throw Error('Previbank: notizia mensile non leggibile; il prezzo resta invariato');
+  const found=candidates[0];
+  return packQuote(asset,found.price,found.date,'Previbank · Comparto Finanziario · comunicazione ufficiale mensile', {timeVerified:true,navFrequency:'mensile'});
+}
+function quoteFromPensionLine(raw,asset){
+  if(!asset.pensionLine||!PENSION_LINES.some(x=>x[0]===asset.pensionLine&&x[0]))throw Error('Seleziona prima la linea Allianz Previdenza');
+  const text=strippedPublicHTML(raw);
+  const code=({azionaria:'0P0000CX0Z',bilanciata:'0P0000CWZ0','obbligazionaria-breve':'0P00017EB1','obbligazionaria-lungo':'0P00017EB2',flessibile:'0P0000CWZP',multiasset:'0P00017EB3'})[asset.pensionLine];
+  if(!code||!text.includes(code))throw Error('Prodotto Allianz non confermato dalla pagina: nessuna quota importata');
+  // First date-price pair in a price-history table: DD.MM.YYYY 35,252.
+  const start=Math.max(0,text.indexOf('Storico '+code));
+  const fragment=text.slice(start,start+5000);
+  let m=fragment.match(/\b(\d{2})\.(\d{2})\.(20\d{2})[\s|]+([\d.,]+)\s*/);
+  let date=null,price=null;
+  if(m){date=`${m[3]}-${m[2]}-${m[1]}`;price=parseEuropeanNumber(m[4]);}
+  if(!m){
+    // Header fallback on overview pages with an explicitly dated quote.
+    const h=text.match(/\b([\d.,]{3,12})\s+[+\-]?\d+[.,]\d+\s+[+\-]?\d+[.,]\d+\s*%\s*(\d{2})\/(\d{2})\s*-/);
+    if(h){
+      price=parseEuropeanNumber(h[1]);
+      const yy=Number(dNow().slice(0,4)),mm=Number(h[3]),dd=Number(h[2]);
+      const tentative=`${yy}-${h[3]}-${h[2]}`;
+      date=tentative>dNow()?`${yy-1}-${h[3]}-${h[2]}`:tentative;
+    }
+  }
+  if(!Number.isFinite(price)||price<=0||!isValidDate(date))throw Error('Allianz Previdenza: quota o data non leggibili dalla fonte pubblica');
+  return packQuote(asset,price,date,`Investing.com · Allianz Previdenza · ${PENSION_LINES.find(x=>x[0]===asset.pensionLine)[1]}`, {timeVerified:!!m,pensionLine:asset.pensionLine,navFrequency:'settimanale'});
+}
+function correctPrevibankPosition(){
+  const a=state.investments.find(x=>x.id==='previbank');if(!a)return;
+  const latest=bestObservation(a.observations||[],dNow());
+  const lastUnits=[...(a.observations||[])].filter(o=>o.mode==='units'&&Number(o.units)>0).at(-1);
+  const defaultQty=lastUnits?.units??'';
+  const knownQuote=bestObservation(a.marketQuotes||[],dNow());
+  const form=input('Numero di quote confermate','units','number',defaultQty,'step="0.000001" min="0.000001" required')+
+    input('Data della posizione','date','date',lastUnits?.date||PREVIBANK_BASE.positionDate,'required')+
+    input('NAV ufficiale per quota (€)','nav','number',knownQuote?.price||PREVIBANK_BASE.nav,'step="0.000001" min="0.000001" required')+
+    input('Data di valorizzazione NAV','navDate','date',knownQuote?.date||PREVIBANK_BASE.quoteDate,'required')+
+    '<div class="full insight">Il tuo numero di quote rimane nel JSON locale. La quotazione NAV e il saldo personale sono due dati differenti. Questa azione modifica soltanto le osservazioni Previbank, dopo conferma.</div>';
+  modal('Correggi posizione Previbank','Inserisci il numero di quote riportato nella tua area riservata.',form,'Conferma correzione',fd=>{
+    const quantity=safeNum(fd.get('units')),nav=safeNum(fd.get('nav'));
+    const date=mustAnyDate(fd,'date'),navDate=mustAnyDate(fd,'navDate');
+    if(!(quantity>0&&nav>0) || date>dNow() || navDate>dNow())throw Error('Inserisci quote, NAV e date validi.');
+    if(!confirm('Sostituire le precedenti rilevazioni Previbank con '+quantity+' quote e NAV '+nav+' EUR? Gli altri investimenti e i movimenti rimangono invariati.'))return false;
+    a.previousPositions=Array.isArray(a.previousPositions)?a.previousPositions:[];
+    a.previousPositions.push({replacedAt:new Date().toISOString(),reason:'Rettifica richiesta dal titolare',observations:JSON.parse(JSON.stringify(a.observations||[]))});
+    a.observations=[{date,mode:'units',units:quantity,source:'Quote confermate dal titolare'}];
+    a.marketQuotes=insertObservation(a.marketQuotes||[],{date:navDate,price:nav,currency:'EUR',manual:true,
+      source:'Quotazione verificata dal titolare',checkedAt:new Date().toISOString()});
+    a.previbankBaselineConfirmed=true;
+    a.previbankOpeningRepair221=true;
+    persist();notify('Posizione Previbank rettificata. Premi Salva per aggiornare il JSON.');
+  });
+}
+function configurePensionLine(){
+  const asset=state.investments.find(a=>a.id==='allianz-pensione');if(!asset)return;
+  const form=select('Linea del fondo pensione Allianz','line',PENSION_LINES,asset.pensionLine||'')+
+    '<div class="full insight">La linea è necessaria per non applicare la quota di un altro comparto. Se non la conosci, lascia «Da configurare» e continua a usare il controvalore verificato nell’area clienti. La scelta NON modifica né cancella lo storico dei contributi.</div>';
+  modal('Allianz Previdenza · Scegli la linea','La quota è pubblica, ma soltanto la tua linea determina il prezzo corretto.',form,'Salva linea',fd=>{
+    const next=forField(fd,'line');if(!PENSION_LINES.some(x=>x[0]===next))throw Error('Linea non valida');
+    if(next!==(asset.pensionLine||'')){
+      asset.marketQuotes=[]; // Never value the new line with the old line's prices.
+      asset.pensionLine=next;
+    }
+    persist();notify(next?'Linea salvata. Premi Aggiorna per cercare la quota.':'Linea non impostata: saldo Allianz non alterato.');
+  });
+}
+
+async function fetchQuoteFor(asset){
+  const providers=asset.id==='previbank'?['news','known-aug2026']:
+      asset.id==='allianz-pensione'?(asset.pensionLine?['line-'+asset.pensionLine]:[]):
+      asset.kind==='etf'?['yahoo1','yahoo2','borsa','google']:
+      asset.id==='artificial'?['darta-unit','fida','fida-analysis','darta-class']:['darta-unit','fida','darta-class'];
+  if(!providers.length)throw Error('Linea Allianz non configurata. Premi «Scegli linea Allianz» prima di aggiornare.');
+  const errs=[];
+  for(const provider of providers){
+    try{
+      const raw=await proxyRead(asset.id,provider);
+      let q;
+      if(provider.startsWith('yahoo'))q=quoteFromYahoo(raw,asset);
+      else if(provider==='borsa')q=quoteFromBorsa(raw,asset);
+      else if(provider==='google')q=quoteFromGoogle(raw,asset);
+      else if(provider==='darta-unit')q=quoteFromDartaUnitLinked(raw,asset);
+      else if(provider==='darta-class')q=quotesFromDarta(raw,asset);
+      else if(asset.id==='previbank')q=quoteFromPrevibank(raw,asset);
+      else if(asset.id==='allianz-pensione')q=quoteFromPensionLine(raw,asset);
+      else q=quoteFromFida(raw,asset);
+      return q;
+    }catch(err){errs.push(provider+': '+String(err?.message||err).slice(0,160));}
+  }
+  throw Error(errs.join(' | '));
+}
+async function refreshMarketQuotes(force=false){
+  if(quoteInProgress){if(force)notify('Aggiornamento già in corso.');return;}
+  if(!force && state.marketSettings?.autoRefresh===false)return;
+  if(!force && Date.now()-quoteLastRun<QUOTE_RETRY_MS)return;
+  if(location.protocol==='file:'){
+    quoteResults={};for(const id of SUPPORTED_PRICE_IDS)quoteResults[id]={ok:false,message:'Avvia AVVIA_MY_WEALTH.bat e apri http://127.0.0.1:8765/'};
+    if(view==='investments')render();if(force)notify('Per quotazioni online apri con AVVIA_MY_WEALTH.bat');return;
+  }
+  quoteLastRun=Date.now();quoteInProgress=true;quoteResults={};if(view==='investments')render();
+  let changed=false;
+  try{
+    // Sequential requests: fewer simultaneous connections, less risk of throttling.
+    for(const id of SUPPORTED_PRICE_IDS){
+      const asset=state.investments.find(a=>a.id===id);if(!asset)continue;
+      if(id==='allianz-pensione'&&(!asset.pensionLine||asset.pensionLine==='life-cycle')){
+        quoteResults[id]={ok:null,message:asset.pensionLine==='life-cycle'?'Percorso multicomparto: resta il controvalore verificato nell’area clienti.':'Seleziona la tua linea Allianz Previdenza per attivare il feed. Il controvalore resta invariato.'};
+        if(view==='investments')render();continue;
+      }
+      try{
+        const q=await fetchQuoteFor(asset);
+        const sameDate=(asset.marketQuotes||[]).find(z=>z.date===q.date);
+        if(sameDate?.manual){quoteResults[id]={ok:true,message:'Prezzo manuale mantenuto ('+fmtDate(q.date)+')'};continue;}
+        const last=bestObservation(asset.marketQuotes,dNow());
+        if(last&&last.date>q.date){quoteResults[id]={ok:true,message:'Conservata quotazione più recente: '+fmtDate(last.date)};continue;}
+        const needsWrite=!sameDate||Math.abs(Number(sameDate.price)-q.price)>.0000001||sameDate.source!==q.source;
+        if(needsWrite){asset.marketQuotes=insertObservation(asset.marketQuotes||[],q);changed=true;}
+        quoteResults[id]={ok:true,message:(needsWrite?'Quota aggiornata':'Quota invariata')+' · '+fmtDate(q.date)+' · '+q.source+(q.provisional?' · DATA NON CONFERMATA':'')+((asset.kind==='fund'||asset.kind==='pension')&&bestObservation(asset.observations,dNow())?.mode==='value'?' · controvalore manuale preservato: servono le quote possedute per ricalcolarlo':'')};
+      }catch(err){
+        const previous=bestObservation(asset.marketQuotes||[],dNow());
+        if(id==='allianz-pensione' && asset.pensionLine==='azionaria' && previous?.price>0){
+          quoteResults[id]={ok:null,message:'Fonte automatica non raggiungibile: '+
+            String(err?.message||err).slice(0,80)+'. Ultimo NAV storico disponibile: '+
+            navMoney(previous.price)+' del '+fmtDate(previous.date)+'; NON aggiornato oggi.'};
+        }else{
+          quoteResults[id]={ok:false,message:String(err?.message||err)};
+        }
+      }
+      if(view==='investments')render();
+    }
+    if(changed)persist();
+    if(force){const yes=Object.values(quoteResults).filter(x=>x.ok).length;notify(`${yes}/7 fonti disponibili.${changed?' Premi Salva per archiviare il JSON.':''}`);}
+  }finally{quoteInProgress=false;if(view==='investments')render();}
+}
+function setManualQuote(id){
+  const asset=state.investments.find(a=>a.id===id && (a.kind==='etf'||a.kind==='fund'||a.kind==='pension'));
+  if(!asset)return;
+  const previous=bestObservation(asset.marketQuotes,dNow());
+  const form=input('Data della quota','date','date',dNow(),`min="${asset.kind==='pension'?'2000-01-01':START_DATE}" max="${dNow()}" required`)+
+    input('Prezzo corrente di una quota (€)','price','number',previous?.price??'','step="0.000001" min="0.000001" required')+
+    input('Fonte del prezzo','source','text',asset.kind==='pension'?asset.provider:asset.kind==='fund'?'Allianz Bank':'Trade Republic','maxlength="75"')+
+    `<div class="full insight">Inserisci il <strong>prezzo unitario corrente</strong>, non il prezzo medio di acquisto. Vale per la data indicata. Solo quote possedute × prezzo corrente genera un controvalore aggiornato.</div>`;
+  modal('Prezzo corrente · '+e(asset.name),'Inserisci la quotazione visualizzata nell’app della banca.',form,'Salva prezzo',fd=>{
+    const date=asset.kind==='pension'?mustAnyDate(fd,'date'):mustDate(fd,'date'),price=mustMoney(fd,'price');if(date>dNow())throw Error('Data quota futura non valida.');if(price<=0)throw Error('Prezzo positivo richiesto.');
+    asset.marketQuotes=insertObservation(asset.marketQuotes||[],{date,price,currency:'EUR',ticker:asset.ticker||'',source:forField(fd,'source')||asset.provider,manual:true,checkedAt:new Date().toISOString()});
+    persist();notify('Prezzo registrato. Premi Salva per aggiornarlo nel JSON.');
+  });
+}
+function notify(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(toastHandle);toastHandle=setTimeout(()=>t.classList.remove('show'),3600);}
+function iconFor(id){return ({allianz:'🏦',tr:'💳',cash:'💶',sella:'🏠',jpm:'🌍',artificial:'🧠',asia:'🌏',clean:'🌱',space:'🚀',previbank:'🛡️','allianz-pensione':'🏛️'})[id]||'💠';}
+function valClass(n){return n>0?'pos':n<0?'neg':'';}
+function percentage(n){return n===null||n===undefined?'—':`${n>=0?'+':''}${new Intl.NumberFormat('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n)}%`;}
+function nav(id,name,emoji){return `<button class="nav-item ${view===id?'active':''}" data-action="nav" data-id="${id}"><span class="nav-emoji">${emoji}</span>${name}</button>`;}
+function footNav(id,name,emoji){return `<button class="${view===id?'active':''}" data-action="nav" data-id="${id}"><span>${emoji}</span>${name}</button>`;}
+function buildSidebar(){return `<aside class="sidebar"><div class="brand"><div class="brand-logo">↗</div><div><div class="brand-title">My Wealth</div><div class="brand-subtitle">Private finance</div></div></div><div class="nav-section-title">Panoramica</div>${nav('home','Dashboard','▦')}${nav('accounts','Conti e liquidità','◫')}${nav('investments','Investimenti','◈')}${nav('plans','Versamenti automatici','↻')}<div class="nav-section-title">Gestione</div>${nav('card','Carta di credito','▤')}${nav('sella','Conto comune Sella','⌂')}${nav('movements','Movimenti','⇄')}${nav('settings','Backup e impostazioni','⚙')}<div class="side-bottom"><div class="time">Dal ${fmtDate(START_DATE)}</div><div class="hint">Dati locali, visibili solo sul dispositivo. Backup consigliato dopo ogni aggiornamento.</div></div></aside>`;}
+function heading(title,subtitle,actionLabel,action){return `<div class="top-bar"><div><div class="eyebrow">MY WEALTH · PATRIMONIO PERSONALE</div><h1 class="page-title">${title}</h1>${subtitle?`<div class="micro lower">${subtitle}</div>`:''}</div><div class="top-actions">${actionLabel?`<button class="btn secondary" data-action="${action}">＋ ${actionLabel}</button>`:''}<button class="btn ghost archive-open" data-action="openarchive" title="Apri un archivio JSON esistente">📂 Apri dati</button><button class="btn primary archive-save" data-action="savearchive">💾 Salva</button><span class="save-indicator" data-save-indicator></span></div></div>`;}
+function metric(title,value,emoji,hint){return `<article class="panel metric"><div class="metric-head"><span>${title}</span><span class="metric-icon">${emoji}</span></div><div class="metric-value">${value}</div><div class="metric-hint">${hint}</div></article>`;}
+function breakdownBars(x){const vals=[Math.max(0,x.personalCash),Math.max(0,x.investments),Math.max(0,x.retirement)];const sum=vals.reduce((a,b)=>a+b,0);if(sum<=0)return `<div class="micro">Inserisci le posizioni per visualizzare la distribuzione.</div>`;const colors=['#5369e9','#0fa28b','#e4ad5f'];return `<div class="split-bar">${vals.map((v,i)=>`<span style="width:${v/sum*100}%;background:${colors[i]}"></span>`).join('')}</div><div class="split-legend"><span>🔵 Liquidità ${Math.round(vals[0]/sum*100)}%</span><span>🟢 Investimenti ${Math.round(vals[1]/sum*100)}%</span><span>🟠 Previdenza ${Math.round(vals[2]/sum*100)}%</span></div>`;}
+function graph(state,range){let records=history(state,dNow()).filter(d=>d.known&&Number.isFinite(d.net)); if(range!=='all'){const cutoff=new Date(`${dNow()}T12:00:00Z`);cutoff.setUTCDate(cutoff.getUTCDate()-Number(range));const cut=cutoff.toISOString().slice(0,10);records=records.filter(x=>x.date>=cut);}if(records.length<2)return `<div class="empty">Servono almeno due giorni con tutte le posizioni iniziali valorizzate per mostrare un andamento attendibile.<br>Il grafico non presenterà valori patrimoniali inventati.</div>`;
+ const w=700,h=205,top=20,bottom=190,pad=16,vals=records.map(x=>x.net);let lo=Math.min(...vals),hi=Math.max(...vals);const span=Math.max(hi-lo,hi*.02,1);lo-=span*.28;hi+=span*.28;const X=i=>pad+(i/Math.max(1,records.length-1))*(w-2*pad),Y=v=>bottom-(v-lo)/(hi-lo)*(bottom-top);const points=records.map((r,i)=>`${X(i).toFixed(1)},${Y(r.net).toFixed(1)}`).join(' ');const fill=`${pad},${bottom} ${points} ${w-pad},${bottom}`;const guide=[.25,.5,.75].map(fr=>`<line x1="${pad}" y1="${top+(bottom-top)*fr}" x2="${w-pad}" y2="${top+(bottom-top)*fr}" stroke="#e6ebf3" stroke-dasharray="4 6"/>`).join('');return `<svg class="graph" viewBox="0 0 ${w} ${h}" aria-label="Evoluzione del patrimonio dal ${e(records[0].date)} al ${e(records.at(-1).date)}" role="img"><defs><linearGradient id="mywealthGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#6277f2" stop-opacity=".21"/><stop offset="100%" stop-color="#6277f2" stop-opacity=".01"/></linearGradient></defs>${guide}<polygon points="${fill}" fill="url(#mywealthGrad)"/><polyline points="${points}" fill="none" stroke="#5369e9" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${X(records.length-1)}" cy="${Y(vals.at(-1))}" r="5" fill="#5369e9" stroke="white" stroke-width="3"/></svg><div class="graph-ticks"><span>${fmtDate(records[0].date)}</span><span>${fmtDate(records.at(-1).date)}</span></div>`;
+}
+function home(x){const canShow=x.personalKnown,missing=x.missing.length;let due=x.planned.filter(z=>z.date<=dNow());return `${heading('Il mio patrimonio','Una vista chiara e aggiornata di quello che possiedi.','Aggiungi movimento','addmovement')}
+  <div class="stack"><div class="hero-overview"><section class="panel hero"><div class="hero-label">PATRIMONIO NETTO PERSONALE</div><div class="hero-amount">${canShow?money(x.personalNet):'— €'}</div><div class="hero-foot"><span class="token">Data zero: 16/10/2026</span><span class="token">${canShow?'Totale calcolato':'Totale da completare'}</span></div><div class="micro lower" style="color:#d4ddec;margin-top:18px">Non include il saldo condiviso di Banca Sella.</div></section>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Stato dei dati</h2><span class="token ${missing?'orange':'green'}">${missing?`${missing} dati mancanti`:'Completato'}</span></div>${missing?`<div class="micro">Per il totale attendibile mancano ancora:</div><div class="rows">${x.missing.slice(0,4).map(s=>`<div class="value-list"><span>${e(s)}</span><span class="token orange">Da inserire</span></div>`).join('')}${missing>4?`<div class="micro">...e altre ${missing-4} voci</div>`:''}</div><button class="btn secondary fill lower" data-action="nav" data-id="accounts">Completa i dati iniziali →</button>`:'<div class="inline-alert success">I valori iniziali sono completi. Controlla comunque le date delle ultime valorizzazioni e i movimenti stimati.</div>'}${due.length?`<div class="inline-alert" style="margin-top:11px">${due.length} scadenze dei versamenti sono da confermare (non incluse nel patrimonio). <button class="mini-link" data-action="nav" data-id="plans">Controllali →</button></div>`:''}</section></div>
+  <div class="grid four">${metric('Liquidità',money(x.personalCash),'💶','Allianz, Trade Republic, contanti')}${metric('Investimenti',money(x.investments),'📈','5 PAC')}${metric('Fondi pensione',money(x.retirement),'🏛️','Previbank e Allianz')}${metric('Debito carta',money(x.card.value),'💳','Addebito differito Allianz')}</div>
+  <div class="grid two"><section class="panel"><div class="panel-head"><h2 class="panel-title">Andamento del patrimonio</h2><div class="tab-chips">${[['30','30 gg'],['90','90 gg'],['365','1 anno'],['all','Tutto']].map(([v,l])=>`<button class="chip ${chartRange===v?'active':''}" data-action="chart" data-id="${v}">${l}</button>`).join('')}</div></div>${graph(state,chartRange)}<div class="micro lower">Serie ricostruita dai dati registrati; valori senza nuove quotazioni sono riportati all'ultima rilevazione.</div></section>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Dove sono i tuoi soldi</h2></div>${breakdownBars(x)}<div class="divider"></div><div class="value-list"><span>Totale attività personali note</span><strong>${money(x.personalCash+x.investments+x.retirement)}</strong></div><div class="value-list"><span>Debito residuo carta</span><strong>${money(x.card.value)}</strong></div><div class="divider"></div><div class="value-list"><strong>Patrimonio netto</strong><strong>${canShow?money(x.personalNet):'—'}</strong></div><div class="divider"></div><div class="value-list"><span>Conto comune Banca Sella <span class="token blue">Separato</span></span><strong>${money(x.shared)}</strong></div><button class="btn secondary fill lower" data-action="nav" data-id="sella">Apri conto comune →</button></section></div>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Accesso rapido</h2></div><div class="grid three"><button class="btn ghost" data-action="setaccount" data-id="allianz">＋ Saldo Allianz</button><button class="btn ghost" data-action="addcard">＋ Spesa con carta</button><button class="btn ghost" data-action="nav" data-id="plans">↻ Gestisci i PAC ricorrenti</button></div></section></div>`;}
+function accountCard(a,x){const o=x.accounts[a.id];return `<article class="panel account-card"><div class="panel-head"><div><div class="account-title">${iconFor(a.id)} ${e(a.name)}</div><div class="account-note">${a.group==='common'?'Liquidità condivisa, esclusa dal patrimonio personale':'Liquidità personale'}</div></div><span class="token ${o.value===null?'orange':o.estimated?'blue':'green'}">${o.value===null?'Manca saldo':o.estimated?'Calcolato':'Verificato'}</span></div><div class="balance">${money(o.value)}</div><div class="last">Ultimo saldo inserito: ${fmtDate(o.asOf)}${o.estimated?` · Movimenti successivi: ${money(o.delta)}`:''}</div><div class="action"><button class="btn secondary" data-action="setaccount" data-id="${a.id}">Aggiorna saldo</button></div></article>`;}
+function accounts(x){return `${heading('Conti e liquidità','Aggiorna i saldi senza dover registrare ogni movimento.','Registra movimento','addmovement')}<div class="stack"><div class="inline-alert info">Un saldo inserito in una data diventa il nuovo punto di riferimento. I movimenti successivi vengono calcolati automaticamente, finché non registri un nuovo saldo verificato.</div><div class="account-grid">${state.accounts.map(a=>accountCard(a,x)).join('')}</div></div>`;}
+function investItem(a,x){
+  const v=x.assets[a.id],cl=v.gain===null?'':valClass(v.gain);
+  const gainLabel=v.gainSource==='intermediary'?'Dato intermediario':v.gainSource==='average-cost'?'Da prezzo medio':'Da dati registrati';
+  const mismatch=v.discrepancy!==null&&Math.abs(v.discrepancy)>=.02;
+  return `<div class="data-row clickable" data-action="viewasset" data-id="${a.id}" tabindex="0" role="button">
+    <div class="round-icon ${a.kind==='pension'?'green':''}">${iconFor(a.id)}</div>
+    <div class="item-main"><div class="item-name">${e(a.name)}</div>
+    <div class="item-meta">${e(a.provider)} · ${v.asOf?`${(a.kind==='etf'||a.kind==='fund')?'Prezzo registrato':'Valorizzazione'} ${fmtDate(v.asOf)}`:'Da valorizzare'}${v.estimated?' · valore stimato':''}${(a.kind==='etf'||a.kind==='fund')&&v.quoteStale?' · ⚠ prezzo assente/vecchio':''}</div></div>
+    <div><div class="item-val">${money(v.value)}</div>${a.kind==='pension'&&v.value===null&&v.marketPrice!==null?`<div class="item-sub">NAV pubblico: ${navMoney(v.marketPrice)} · nessuna quota personale registrata</div>`:''}<div class="item-sub ${cl}">${v.gain!==null?`${money(v.gain)}${v.gainPct!==null?` · ${percentage(v.gainPct)}`:``}`:'Rendimento —'}</div>
+    ${v.gain!==null?`<div class="item-sub">${gainLabel}${mismatch?' · ⚠ da riconciliare':''}</div>`:''}</div><span class="muted">›</span>
+  </div>`;
+}
+function investments(x){const fund=state.investments.filter(a=>a.kind!=='pension');const pension=state.investments.filter(a=>a.kind==='pension');return `${heading('Investimenti','Cinque PAC e due fondi pensione, con valori e costi distinti.','Programma rate','gotoplans')}<div class="stack"><div class="grid three">${metric('PAC · Controvalore',money(x.investments),'📈','2 Allianz · 3 Trade Republic')}${metric('Previdenza',money(x.retirement),'🏛️','Previbank · Allianz Previdenza')}${metric('Totale investito + previdenza',money(x.investments+x.retirement),'✨','Include solo le posizioni conosciute')}</div><div class="panel market-feed-panel"><div class="panel-head"><h2 class="panel-title">📡 Quotazioni · 5 PAC + 2 fondi pensione</h2>${marketBadge()}</div><div class="micro">My Wealth prova a recuperare automaticamente le quotazioni dei 3 ETF e dei 2 fondi Allianz <strong>tramite un server gratuito sul tuo PC</strong>, quando l’app viene aperta e ogni 30 minuti mentre resta aperta. Fonti: Yahoo Finance, Borsa Italiana, Google Finance e Allianz Darta Saving (fondo interno AG28/AC18); FIDA come alternativa. Le quotazioni non sono certificate in tempo reale: controlla sempre data e fonte. Per Allianz la quota ufficiale viene registrata; il controvalore personale viene aggiornato solo con il numero di quote corretto. Un controvalore manuale resta invariato. Le quote dei fondi pensione hanno tempi di pubblicazione propri e non rappresentano il montante personale.</div><div class="archive-actions lower"><button class="btn primary" data-action="refreshquotes">↻ Aggiorna tutte le quotazioni</button><button class="btn secondary" data-action="pensionline">Scegli linea Allianz Previdenza</button><button class="btn ghost" data-action="marketsettings">Impostazioni prezzi</button></div>${SUPPORTED_PRICE_IDS.map(id=>{const o=quoteResults[id];return o?`<div class="micro" style="margin-top:9px;color:${o.ok===true?'#127e67':'#af663a'}">${o.ok===true?'✓':'⚠'} ${e(state.investments.find(a=>a.id===id)?.name||id)}: ${e(o.message)}</div>`:'';}).join('')}<div class="micro lower">Per aggiornare il patrimonio servono anche le <strong>quote possedute</strong>; Previbank pubblica in genere mensilmente e Allianz Previdenza per linea, spesso settimanalmente. Per Allianz Previdenza usiamo una fonte pubblica terza, non garantita. Se Darta o FIDA non sono disponibili, non viene inventato alcun valore. I dati Darta sono quote dei fondi interni AG28/AC18, non classi Challenge Private scelte arbitrariamente. Per conservare le quotazioni nel tuo archivio premi <strong>💾 Salva</strong>.</div></div>${!state.investments.find(a=>a.id==='previbank')?.previbankBaselineConfirmed?'<div class="inline-alert"><strong>⚠ Posizione Previbank da allineare.</strong> Per calcolare il controvalore servono le tue quote effettive, da inserire e salvare nel JSON. <button class="btn secondary small" data-action="fixprevibank">Applica dati verificati Previbank</button> Nessun dato già inserito verrà sostituito senza conferma.</div>':''}<div class="inline-alert info">Per aggiornare i prezzi avvia <strong>AVVIA_MY_WEALTH.bat</strong> dalla cartella estratta, NON aprire direttamente l’HTML. Per i fondi Allianz leggiamo prima le quote pubblicate ufficialmente da Darta (codici AG28 e AC18). Se hai un contratto con quote di una classe specifica diversa, non usare queste quote per valorizzare direttamente quel contratto senza prima verificarne la corrispondenza. Le quote possono sempre essere inserite manualmente dal dettaglio.</div><section class="panel"><div class="panel-head"><h2 class="panel-title">I tuoi 5 PAC</h2><span class="token blue">5 posizioni</span></div><div class="rows">${fund.map(a=>investItem(a,x)).join('')}</div></section><section class="panel"><div class="panel-head"><h2 class="panel-title">I fondi pensione</h2><span class="token green">2 posizioni</span></div><div class="rows">${pension.map(a=>investItem(a,x)).join('')}</div></section></div>`;}
+function planCard(p,x){const asset=state.investments.find(a=>a.id===p.assetId);const daylist=(p.days||[]).map(d=>d===31&&p.assetId==='previbank'?'ultimo giorno':`${d}`).join(' e ');const existing=generateRecurring(state,dNow()).filter(o=>o.planId===p.id);const pend=existing.filter(o=>o.status==='estimated');const source=state.accounts.find(a=>a.id===p.source)?.name||'Trattenuta/TFR/dat. di lavoro';return `<article class="panel"><div class="panel-head"><div><div class="item-name">${iconFor(p.assetId)} ${e(p.label)}</div><div class="item-meta">${e(asset.name)} · ${e(source)}</div></div><span class="token ${p.active?'green':'orange'}">${p.active?'Attivo':'Sospeso'}</span></div><div class="grid two"><div><div class="micro">Importo per scadenza</div><div class="metric-value" style="font-size:22px;margin-top:3px">${money(Number(p.amount)||0)}</div></div><div><div class="micro">Giorni programmati</div><div class="item-name lower">${daylist?`${daylist} del mese`:'Non impostati'}</div><div class="plan-tag">${p.frequency==='twice'?'Due rate al mese':'Una rata al mese'}</div></div></div><div class="divider"></div><div class="row-action" style="display:flex;gap:9px;align-items:center;justify-content:space-between;flex-wrap:wrap"><span class="micro">${pend.length?`${pend.length} ${pend.length===1?'rata':'rate'} da confermare`:'Nessuna rata da verificare'}</span><button class="btn secondary small" data-action="editplan" data-id="${e(p.id)}">Modifica / attiva</button></div></article>`;}
+function plans(x){
+  const recent=generateRecurring(state,dNow()).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,35);
+  const sumMonthly=state.plans.filter(p=>p.active).reduce((t,p)=>t+p.amount*(p.frequency==='twice'?2:1),0);
+  const sumPrevid=state.plans.filter(p=>p.active&&p.assetId==='previbank').reduce((t,p)=>t+p.amount,0);
+  const sumInvest=state.plans.filter(p=>p.active&&p.assetId!=='previbank').reduce((t,p)=>t+p.amount*(p.frequency==='twice'?2:1),0);
+  const nextDate=new Date(dNow()+'T12:00:00Z');nextDate.setUTCDate(nextDate.getUTCDate()+50);
+  const future=generateRecurring(state,nextDate.toISOString().slice(0,10)).filter(o=>o.date>dNow()&&o.status!=='skipped').sort((a,b)=>a.date.localeCompare(b.date)||a.label.localeCompare(b.label,'it'));
+  const groups=[];
+  for(const o of future){let g=groups.at(-1);if(!g||g.date!==o.date){g={date:o.date,items:[]};groups.push(g);}g.items.push(o);}
+  const plannedTimeline=`<section class="panel upcoming-panel"><div class="upcoming-head"><h2>🗓️ Prossime scadenze</h2><span class="token blue">${future.length} rate · 50 giorni</span></div><p class="timeline-summary">In ordine cronologico, con le rate dello stesso giorno raggruppate. Sono <strong>programmate</strong>, non ancora eseguite.</p>${groups.length?`<div class="timeline-wrap" role="list" aria-label="Scadenze future in ordine cronologico">${groups.map(g=>`<div class="timeline-day" role="listitem"><div class="timeline-track"><span class="timeline-dot"></span><span class="timeline-rail"></span></div><div class="timeline-content"><div class="timeline-day-head"><span class="timeline-date"><span class="timeline-weekday">${new Intl.DateTimeFormat('it-IT',{weekday:'long',timeZone:'UTC'}).format(new Date(g.date+'T12:00:00Z'))}</span> · ${fmtDate(g.date)}</span><span class="timeline-day-total">Totale ${money(g.items.reduce((n,x)=>n+x.amount,0))}</span></div><div class="timeline-items">${g.items.map(o=>`<div class="timeline-item"><span class="timeline-item-bullet">${o.assetId==='previbank'?'🏛':'↗'}</span><div class="timeline-item-info"><div class="timeline-item-name">${e(o.label)}</div><div class="timeline-item-note">${e(o.source==='external'?'Trattenuta / conferimento':o.source==='allianz'?'Da Allianz Bank':o.source==='tr'?'Da Trade Republic':'Versamento programmato')}</div></div><strong class="timeline-item-amount">${money(o.amount)}</strong></div>`).join('')}</div></div></div>`).join('')}</div>`:'<div class="empty">Nessuna scadenza programmata nei prossimi 50 giorni.</div>'}<div class="timeline-footer">Il totale patrimoniale non cambia finché le rate non vengono confermate.</div></section>`;
+return `${heading('Versamenti automatici','Configura gli importi e i giorni: l’app genera le rate alla scadenza.','Nuovo versamento','addinvestment')}<div class="stack"><div class="inline-alert info"><strong>Piani già configurati con le tue indicazioni.</strong> Le rate compaiono alle scadenze previste; finché non le confermi, <strong>non modificano i saldi né le quote del patrimonio</strong>. Per le quote reali servirà verificare l'esecuzione presso il gestore.</div><div class="grid three">${metric('Rate ricorrenti mensili',money(sumMonthly),'🗓️','Mese completo, non ottobre parziale')}${metric('5 PAC + previdenza Allianz',money(sumInvest),'📈','Versamenti bancari mensili')}${metric('Previbank · totale',money(sumPrevid),'🏛️','TFR + dipendente + datore')}</div>${plannedTimeline}<div class="section-heading"><div><h2>Regole ricorrenti</h2><p>Puoi modificare importi, fonte, date e costi.</p></div></div><div class="grid two">${state.plans.map(p=>planCard(p,x)).join('')}</div><section class="panel"><div class="panel-head"><h2 class="panel-title">Scadenze generate</h2><span class="token blue">Fino a oggi</span></div>${recent.length?`<div class="table-wrap"><table><thead><tr><th>Data</th><th>Operazione</th><th>Importo</th><th>Stato</th><th>Azioni</th></tr></thead><tbody>${recent.map(o=>`<tr><td class="nowrap">${fmtDate(o.date)}</td><td>${e(o.label)}</td><td>${money(o.amount)}</td><td><span class="token ${o.status==='confirmed'?'green':o.status==='skipped'?'red':'orange'}">${o.status==='confirmed'?'Confermato':o.status==='skipped'?'Saltato':'Da verificare'}</span></td><td><button class="btn ghost small" data-action="confirmplan" data-id="${e(o.id)}">Dettagli</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">Ancora nessun versamento automatico: imposta importo, data e attiva un piano.</div>'}</section></div>`;}
+function card(x){const periods=Object.entries(x.card.byPeriod).sort((a,b)=>b[0].localeCompare(a[0]));const earliestDue=periods.filter(([period,amount])=>amount>0.005).map(([period])=>cardDueDate(period)).sort()[0]||cardDueDate(monthKey(dNow()));const entries=x.card.purchases.sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10);return `${heading('Carta di credito','Carta personale addebitata sul conto Allianz Bank il 15 del mese successivo.','Nuova spesa','addcard')}<div class="stack"><div class="grid three">${metric('Debito complessivo',money(x.card.value),'💳','Detratto dal patrimonio netto')}${metric('Spese mese corrente',money(x.card.byPeriod[monthKey(dNow())]||0),'🧾','Al netto di eventuali pagamenti registrati')}${metric('Prima scadenza aperta',fmtDate(earliestDue),'📅',earliestDue<dNow()?'Scadenza già trascorsa':'Addebito atteso sul conto Allianz')}</div>${x.card.unknownOpening?'<div class="inline-alert">Per evitare di sottostimare il debito al 16/10/2026, inserisci il debito iniziale della carta, relativo alle spese effettuate prima della data zero. <button class="mini-link" data-action="cardopening">Imposta debito iniziale →</button></div>':''}<section class="panel"><div class="panel-head"><h2 class="panel-title">Debito per periodo di spesa</h2><button class="btn ghost small" data-action="cardopening">Modifica apertura</button></div>${periods.length?`<div class="rows">${periods.map(([period,n])=>`<div class="data-row"><div class="item-main"><div class="item-name">${period}</div><div class="item-meta">Addebito teorico ${fmtDate(cardDueDate(period))}</div></div><div><div class="item-val">${money(n)}</div></div>${n>0.005?`<button class="btn secondary small" data-action="paycard" data-id="${e(period)}">Registra addebito</button>`:'<span class="token green">Saldato</span>'}</div>`).join('')}</div>`:'<div class="empty">Non risultano ancora spese con carta.</div>'}</section><section class="panel"><div class="panel-head"><h2 class="panel-title">Ultimi acquisti</h2></div>${entries.length?`<div class="rows">${entries.map(o=>`<div class="data-row"><div class="item-main"><div class="item-name">${e(o.note||'Acquisto con carta')}</div><div class="item-meta">${fmtDate(o.date)} · scadenza ${fmtDate(cardDueDate(monthKey(o.date)))}</div></div><div class="item-val">${money(o.amount)}</div></div>`).join('')}</div>`:'<div class="empty">Registra gli acquisti del mese oppure, più semplicemente, un totale cumulativo.</div>'}</section></div>`;}
+function sella(x){const a=x.accounts.sella;return `${heading('Conto comune Banca Sella','Solo per te: monitoraggio delle risorse e delle spese condivise.','Nuovo movimento','addmovement')}<div class="stack"><div class="grid three">${metric('Saldo conto comune',money(x.shared),'🏠','Non conteggiato nel patrimonio personale')}${metric('Versamenti tuoi registrati',money(x.meContrib),'↗','Dal 16 ottobre 2026')}${metric('Versamenti partner registrati',money(x.partnerContrib),'↗','Dal 16 ottobre 2026')}</div><section class="panel"><div class="panel-head"><h2 class="panel-title">Conto comune · Banca Sella</h2><span class="token blue">Patrimonio condiviso</span></div><p class="micro">Non attribuiamo automaticamente il 50% del saldo a nessuno. I bonifici che effettui dal tuo Allianz Bank verso Sella spostano liquidità personale nel conto comune.</p><div class="grid two"><button class="btn secondary" data-action="setaccount" data-id="sella">Aggiorna saldo Sella</button><button class="btn ghost" data-action="addpartner">Registra versamento partner</button></div><div class="divider"></div><div class="micro">Ultimo saldo registrato: ${fmtDate(a.asOf)} · Movimenti netti successivi: ${money(a.delta)}</div></section><section class="panel"><div class="panel-head"><h2 class="panel-title">Movimenti sul conto comune</h2></div>${x.events.filter(z=>z.to==='sella'||z.from==='sella'||z.source==='sella').length?`<div class="rows">${x.events.filter(z=>z.to==='sella'||z.from==='sella'||z.source==='sella').slice(-12).reverse().map(o=>entryRow(o)).join('')}</div>`:'<div class="empty">Inizia con un saldo, poi registra i trasferimenti da Allianz e le spese condivise.</div>'}</section></div>`;}
+const entryType={income:'Entrata',expense:'Spesa',transfer:'Trasferimento',investment:'Versamento investimento',card_purchase:'Acquisto carta',card_payment:'Pagamento carta'};
+function entryRow(o,allowDelete=false){
+  const acct={allianz:'Allianz',tr:'Trade Republic',sella:'Banca Sella',cash:'Contanti',external:'Trattenuta/TFR'};
+  const planned=o.status==='planned',future=o.date>dNow(),old=o.date<START_DATE;
+  const autoApplied=planned && !future && !old;
+  const tag=old?'<span class="token blue">Prima della data zero</span>':
+    future?'<span class="token orange">Programmato · non ancora contabilizzato</span>':
+    autoApplied?'<span class="token blue">Contabilizzato automaticamente · da verificare</span>':
+    o.status==='confirmed'?'<span class="token green">Verificato</span>':
+    o.automatic?'<span class="token orange">Rata da verificare</span>':'';
+  const action=allowDelete?(o.automatic?`<button class="btn ghost small" data-action="confirmplan" data-id="${e(o.id)}">Verifica</button>`:
+    `${autoApplied?`<button class="btn secondary small" data-action="confirmscheduled" data-id="${e(o.id)}">Segna verificato</button><button class="btn ghost small" data-action="skipscheduled" data-id="${e(o.id)}">Non avvenuto</button>`:''}<button class="btn warn small" data-action="removeevent" data-id="${e(o.id)}">Elimina</button>`):'';
+  return `<div class="data-row"><div class="round-icon ${o.type==='income'?'green':o.type==='expense'?'orange':''}">${o.type==='income'?'↓':o.type==='expense'?'↑':o.type==='transfer'?'⇄':o.type==='investment'?'↗':o.type==='card_purchase'?'▣':'✓'}</div><div class="item-main"><div class="item-name">${e(o.note||o.label||entryType[o.type]||o.type)}</div><div class="item-meta">${fmtDate(o.date)} · ${e(entryType[o.type]||o.type)}${o.from?` · ${e(acct[o.from]||o.from)}`:''}${o.to?` → ${e(acct[o.to]||o.to)}`:''}${o.type==='investment'?` · ${e(acct[o.source]||o.source||'Fonte esterna')} → ${e(state.investments.find(a=>a.id===o.assetId)?.name||o.assetId)}`:''}${o.automatic?' · Piano ricorrente':''}</div><div style="margin-top:6px">${tag}</div></div><div class="item-val">${money(o.amount)}</div><div style="display:flex;gap:5px;flex-wrap:wrap">${action}</div></div>`;
+}
+function movements(x){
+  const filt=o=>movementFilter==='all'||o.type===movementFilter;
+  const upcoming=state.movements.filter(o=>o.status!=='skipped'&&o.date>dNow()&&o.date>=START_DATE&&filt(o)).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,100);
+  const effective=x.events.filter(filt).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,100);
+  const skipped=state.movements.filter(o=>o.status==='skipped'&&o.date>=START_DATE&&filt(o)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,50);
+  const prestart=state.movements.filter(o=>o.date<START_DATE&&filt(o)).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,100);
+  const filterSelect=`<select id="movementFilter" class="chip" aria-label="Filtra movimenti">${[['all','Tutti'],['income','Entrate'],['expense','Spese'],['transfer','Trasferimenti'],['investment','PAC e pensioni'],['card_purchase','Spese carta'],['card_payment','Addebiti carta']].map(([v,l])=>`<option value="${v}" ${movementFilter===v?'selected':''}>${l}</option>`).join('')}</select>`;
+  return `${heading('Movimenti','Entrate, spese e operazioni programmate con applicazione alla data prevista.','Nuovo movimento','addmovement')}<div class="stack"><section class="panel"><div class="panel-head"><h2 class="panel-title">Registro operativo</h2>${filterSelect}</div><p class="movement-section-hint">Una registrazione futura entra nei conteggi dal giorno indicato, anche se l'app era chiusa. Non prova che la banca abbia eseguito il movimento: puoi verificarlo oppure segnarlo come non avvenuto.</p></section>${upcoming.length?`<section class="panel movement-pending"><div class="panel-head"><h2 class="panel-title">🗓️ Operazioni future</h2><span class="token orange">${upcoming.length}</span></div><p class="movement-section-hint">Ordine cronologico: saranno contabilizzate automaticamente dalla data prevista, senza bisogno di conferma.</p><div class="rows">${upcoming.map(o=>entryRow(o,true)).join('')}</div></section>`:''}<section class="panel"><div class="panel-head"><h2 class="panel-title">Movimenti contabilizzati</h2><span class="token blue">${effective.length}</span></div>${effective.length?`<div class="rows">${effective.map(o=>entryRow(o,true)).join('')}</div>`:'<div class="empty">Nessun movimento contabilizzato.</div>'}</section>${skipped.length?`<section class="panel"><div class="panel-head"><h2 class="panel-title">Non avvenuti</h2><span class="token blue">${skipped.length}</span></div><div class="rows">${skipped.map(o=>`<div class="data-row"><div class="item-main"><div class="item-name">${e(o.note||entryType[o.type]||o.type)}</div><div class="item-meta">${fmtDate(o.date)} · ${money(o.amount)}</div></div><span class="token">Non contabilizzato</span><button class="btn secondary small" data-action="reactivatescheduled" data-id="${e(o.id)}">Ripristina</button></div>`).join('')}</div></section>`:''}${prestart.length?`<section class="panel"><div class="panel-head"><h2 class="panel-title">Prima del 16 ottobre 2026</h2><span class="token blue">Solo storico</span></div><div class="micro" style="margin-bottom:10px">Questi movimenti sono conservati per consultazione, ma non vengono sottratti una seconda volta dai saldi iniziali.</div><div class="rows">${prestart.map(o=>entryRow(o,true)).join('')}</div></section>`:''}<div class="inline-alert info">Gli importi programmati applicati alla scadenza sono <strong>stime finché non li verifichi</strong> nell'estratto conto. Aggiornare un saldo bancario alla stessa data può sostituire la stima con il valore verificato.</div></div>`;
+}
+function settings(x){
+  const obs=state.accounts.reduce((s,a)=>s+(a.observations?.length||0),0)+state.investments.reduce((s,a)=>s+(a.observations?.length||0),0);
+  return `${heading('Dati e impostazioni','Salvataggio stabile nei Documenti di Windows, con copie di sicurezza.')}
+  <div class="stack">
+  <section class="panel save-section"><div class="panel-head"><h2 class="panel-title">💾 Archivio dati sul computer</h2><span class="save-indicator" data-save-indicator></span></div>
+    <div class="micro">Premi <strong>Salva</strong> per registrare i dati nella cartella <strong>Documenti → My Wealth</strong>. La posizione rimane fissa anche quando sposti o aggiorni la cartella dell'app. A ogni salvataggio viene creata una copia di sicurezza. Se sposti il JSON principale, puoi importarlo oppure ripristinare una copia dal PC.</div>
+    <div class="archive-info"><div><span>Archivio sul PC</span><strong data-save-file>Non ancora creato</strong></div><div><span>Ultimo salvataggio</span><strong data-save-time>Nessuno</strong></div><div><span>Modalità</span><strong data-file-api>Verifica browser...</strong></div></div>
+    <div class="archive-actions"><button class="btn primary" data-action="savearchive">💾 Salva modifiche sul PC</button><button class="btn secondary" data-action="openarchive">📂 Importa JSON spostato / precedente</button><span class="micro">Copie locali disponibili: <strong data-backup-count>—</strong></span></div>
+    <div class="inline-alert info lower">Le modifiche non salvate restano provvisoriamente nel browser. Il file principale e le copie di sicurezza restano sul PC, nei Documenti (eventualmente su OneDrive se Windows sincronizza già quella cartella). <strong>Nessun abbonamento cloud.</strong> Se hai spostato il JSON, clicca Importa JSON e poi Salva.</div>
+  </section>
+  <div class="grid three">${metric('Data zero',fmtDate(START_DATE),'📅','Inizio storico')}${metric('Movimenti manuali',String(state.movements.length),'🧾','Eventi registrati')}${metric('Rilevazioni',String(obs),'💾','Saldi e quotazioni')}</div>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Aggiornamenti My Wealth via GitHub</h2><span class="token blue">v${APP_VERSION}</span></div>
+    <div class="micro">Il repository GitHub contiene <strong>solo il codice dell'app</strong>; i saldi e i movimenti restano nel JSON dei Documenti. Questa funzione sara' utilizzabile dopo aver creato e pubblicato il repository. L'app chiede sempre il tuo permesso prima di installare un aggiornamento.</div>
+    <div class="grid two lower" style="margin-top:13px"><div><label class="field-label" for="githubRepoInput">Repository aggiornamenti (proprietario/nome)</label><input id="githubRepoInput" value="${e(updateRepository)}" placeholder="esempio/MyWealth-App" autocomplete="off" spellcheck="false" /></div><div style="align-self:end;display:flex;gap:8px;flex-wrap:wrap"><button class="btn secondary" data-action="saverepo">Salva repository</button><button class="btn secondary" data-action="checkupdate" ${updateLoading?'disabled':''}>${updateLoading?'Verifica in corso...':'Controlla aggiornamenti'}</button></div></div>
+    <div class="micro lower" aria-live="polite">${!updateRepository?'Repository non configurato: collega GitHub in chat e crea un repository prima di usare gli aggiornamenti.':updateInfo?.error?'Impossibile controllare GitHub: '+e(updateInfo.error):updateInfo?.available?'Nuova versione '+e(updateInfo.latest)+' disponibile.':updateInfo?'Nessuna nuova versione. Versione corrente: '+APP_VERSION:'Repository configurato: premi Controlla aggiornamenti.'}</div>
+    ${updateInfo?.available && updateInfo?.canInstall?`<div class="inline-alert info lower">Versione ${e(updateInfo.latest)}. <button class="btn primary small" data-action="installupdate">Installa aggiornamento</button> <span class="micro">Dopo l'installazione dovrai riavviare My Wealth.</span></div>`:''}
+    <div class="micro lower">L'aggiornamento verifica l'integrita' del pacchetto con SHA-256 e crea una copia di sicurezza del codice. Non modifica l'archivio MyWealth_Dati.json. Funziona con repository GitHub pubblici; per quelli privati occorrera' predisporre un accesso autenticato.</div>
+  </section>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Backup aggiuntivi ed esportazione</h2></div><div class="micro">Puoi sempre esportare un backup JSON separato o importare dati da una versione precedente. Conservalo in una cartella di cui possiedi una copia.</div><div class="grid two lower" style="margin-top:15px"><button class="btn secondary" data-action="exportjson">↓ Scarica backup (.json)</button><button class="btn secondary" data-action="importjson">↑ Importa backup (.json)</button><button class="btn secondary" data-action="recoverbackup">↶ Ripristina ultima copia sul PC</button><button class="btn ghost" data-action="exportcsv">↓ Esporta movimenti (.csv)</button><button class="btn ghost" data-action="exporthistory">↓ Esporta storico (.csv)</button></div></section>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Automazioni e privacy</h2></div><div class="inline-alert info"><strong>Movimenti futuri manuali:</strong> entrano automaticamente nel patrimonio dalla data registrata, anche quando riapri l'app dopo giorni. Rimangono da verificare con la banca. <strong>PAC ricorrenti:</strong> continuano invece a richiedere conferma per evitare di inventare l'acquisto di quote.</div><div class="micro lower">Solo le richieste pubbliche per i 5 PAC vengono inviate ai siti di quotazioni quando attivo; i dati personali rimangono locali. L'archivio JSON non è cifrato: proteggi l'accesso al PC e al tuo account OneDrive. I 5 PAC usano fonti pubbliche non certificate e potrebbero non aggiornarsi; non è sincronizzazione con Trade Republic. Nessun dato bancario personale viene inviato al servizio di quotazioni.</div></section>
+  <section class="panel"><div class="panel-head"><h2 class="panel-title">Operazioni avanzate</h2></div><button class="btn warn" data-action="reset">Azzera i dati correnti</button><div class="micro lower">L'azzeramento sarà applicato al file di archivio soltanto se premi successivamente Salva. Prima esporta un backup.</div></section></div>`;
+}
+function render(){let x;try{x=computeAt(state,dNow());}catch(error){console.error(error);return notify('Errore nei dati: controlla il file di backup.');}const pages={home:()=>home(x),accounts:()=>accounts(x),investments:()=>investments(x),plans:()=>plans(x),card:()=>card(x),sella:()=>sella(x),movements:()=>movements(x),settings:()=>settings(x)};document.getElementById('app').innerHTML=`<div class="app-layout">${buildSidebar()}<main class="main"><div class="content">${(pages[view]||pages.home)()}<div class="footer-note">MY WEALTH · Versione 2.2 · Quotazioni con server locale gratuito · Salvataggio file locale · Dal ${fmtDate(START_DATE)} · Nessuna connessione bancaria</div></div></main></div><nav class="bottom-nav" aria-label="Navigazione principale">${footNav('home','Home','⌂')}${footNav('investments','PAC','◈')}${footNav('plans','Rate','↻')}${footNav('sella','Sella','♧')}${footNav('settings','Altro','⚙')}</nav>`;updateArchiveStatus();}
+function closeModal(){modalSave=null;document.getElementById('modal-root').innerHTML='';}
+function modal(title,description,content,submitText,submit){modalSave=submit;document.getElementById('modal-root').innerHTML=`<div class="modal-overlay" id="overlay"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="modal-top"><div><div class="modal-title" id="dialogTitle">${title}</div><div class="modal-description">${description}</div></div><button class="modal-close" data-action="closemodal" aria-label="Chiudi">×</button></div><div class="modal-body"><form id="activeForm"><div class="form-grid">${content}</div><div class="form-footer"><button type="button" class="btn ghost" data-action="closemodal">Annulla</button><button type="submit" class="btn primary">${submitText||'Salva'}</button></div></form></div></div></div>`;setTimeout(()=>document.querySelector('#activeForm input:not([type=hidden]),#activeForm select')?.focus(),0);}
+const input=(label,name,kind,value,attrs='',hint='')=>`<div class="field"><label for="f-${name}">${label}</label><input id="f-${name}" name="${name}" type="${kind}" value="${e(value??'')}" ${attrs}>${hint?`<small>${hint}</small>`:''}</div>`;
+const select=(label,name,items,val)=>`<div class="field"><label for="f-${name}">${label}</label><select name="${name}" id="f-${name}">${items.map(([id,desc])=>`<option value="${e(id)}" ${id===val?'selected':''}>${e(desc)}</option>`).join('')}</select></div>`;
+function updateAccount(id){const account=state.accounts.find(a=>a.id===id),last=account?.observations?.at(-1);if(!account)return;modal(`Saldo · ${e(account.name)}`,'Inserisci il saldo effettivamente verificato per la data indicata.',input('Data del saldo','date','date',dNow(),`min="${START_DATE}" max="${dNow()}" required`)+input('Saldo disponibile (€)','amount','number',last?.amount??'', 'step="0.01" required', 'Può essere anche negativo in caso di scoperto.')+`<div class="full insight">I movimenti successivi alla data inserita saranno sommati a questo valore. Eventuali movimenti già avvenuti sono considerati inclusi nel saldo.</div>`,'Salva saldo',fd=>{const date=mustDate(fd,'date'),amount=safeNum(fd.get('amount'));if(amount===null)throw Error('Inserisci il saldo.');account.observations=insertObservation(account.observations,{date,amount,includedEventIds:allEvents(state,date).filter(z=>z.date===date).map(z=>z.id)});persist();notify('Saldo registrato.');});}
+function marketSettingsModal(){
+  const form=select('Aggiornamento automatico con app aperta','auto',[['yes','Sì, all’apertura e ogni 30 minuti'],['no','No, solo col pulsante Aggiorna']],state.marketSettings?.autoRefresh===false?'no':'yes')+
+    `<div class="full insight">Per funzionare avvia <strong>AVVIA_MY_WEALTH.bat</strong>. I dati di mercato arrivano tramite il server sul tuo PC; i siti esterni ricevono solamente richieste pubbliche, mai conti o patrimonio. Non è un servizio di quotazioni certificato. Se una fonte è irraggiungibile, il valore resta invariato e compare un avviso. Le due quote Darta sono quelle dei fondi interni AG28 e AC18, non delle classi A-F. Il file JSON si salva con 💾 Salva.</div>`;
+  modal('Impostazioni aggiornamento','Cinque PAC e due fondi pensione, senza abbonamenti o cloud.',form,'Salva preferenze',fd=>{state.marketSettings={autoRefresh:forField(fd,'auto')==='yes'};persist();notify('Preferenze aggiornate.');});
+}
+function updateAsset(id){
+  const asset=state.investments.find(a=>a.id===id);
+  if(!asset)return;
+  const etf=asset.kind==='etf';const marketLinked=etf||asset.kind==='fund'||asset.kind==='pension';
+  const latest=asset.observations?.at(-1);
+  const value=latest?.mode==='value'?latest.value:'';
+  const reportedValue=latest?.date===dNow() && latest.reportedGain!=null?latest.reportedGain:'';
+  const reportedPct=latest?.date===dNow() && latest.reportedGainPct!=null?latest.reportedGainPct:'';
+  const quote=marketLinked?bestObservation(asset.marketQuotes,dNow()):null;
+  const form=
+    input('Data della posizione','date','date',dNow(),`min="${asset.kind==='pension'?'2000-01-01':START_DATE}" max="${dNow()}" required`)+
+    select('Modalità','mode',[['value','Controvalore ufficiale in euro'],['units',marketLinked?'Quote possedute (con quotazione separata)':'Quote possedute × prezzo quota']],latest?.mode||(etf?'units':'value'))+
+    input('Controvalore ufficiale rilevato (€)','value','number',value,'step="0.01" min="0"','Solo per la modalità «Controvalore ufficiale».')+
+    input('Numero di quote possedute','units','number',latest?.units??'','step="0.00000001" min="0"')+
+    (marketLinked?
+      (asset.kind==='pension'?'':input('PREZZO MEDIO di acquisto (€ / quota)','avgPrice','number',latest?.avgPrice??'','step="0.000001" min="0"','Questo NON è il prezzo attuale; serve per la perdita/guadagno.'))+
+      `<div class="full insight"><strong>Prezzo corrente:</strong> ${quote?navMoney(quote.price)+' · '+fmtDate(quote.date)+' · '+e(quote.source):'non ancora rilevato'}. Per aggiornarlo usa «Aggiorna prezzi ora» oppure «Inserisci prezzo corrente» nel dettaglio. <strong>Il prezzo medio non viene più usato come prezzo corrente.</strong></div>`:
+      input('Valore corrente per quota (€)','price','number',latest?.price??'','step="0.000001" min="0"'))+
+    input('Capitale versato al 16/10/2026 (€)','capital','number',asset.investedBeforeStart??'','step="0.01" min="0"','Totale effettivamente versato, distinto dal costo medio × quote.')+
+    input('Guadagno / perdita indicato dalla banca (€; facoltativo)','reportedGain','number',reportedValue,'step="0.01"','Valore in euro con segno negativo se in perdita. Non sostituisce la quotazione corrente.')+
+    input('Percentuale esatta indicata dalla banca (facoltativa)','reportedGainPct','number',reportedPct,'step="0.001"')+
+    input('ISIN / codice prodotto','isin','text',asset.isin||'','maxlength="55"')+
+    (etf?input('Ticker europeo per il feed','ticker','text',asset.ticker||'','maxlength="24"','Il ticker deve riferirsi a una quotazione in EUR: JEDI.MI, AASI.MI, INRE.PA.'):'')+
+    `<div class="full insight">Inserisci valore e risultato della stessa data. Il risultato dell'intermediario resta una verifica separata. <strong>Se registri quote senza un prezzo di mercato disponibile, il controvalore resta non determinabile invece di essere inventato.</strong></div>`;
+  modal(e(asset.name),'Quote, costo medio e prezzo di mercato sono ora campi distinti.',form,'Salva posizione',fd=>{
+    const date=asset.kind==='pension'?mustAnyDate(fd,'date'):mustDate(fd,'date'),mode=forField(fd,'mode');
+    if(date>dNow())throw Error('La rilevazione della posizione non può avere data futura.');
+    const ob={date,mode};
+    if(mode==='value')ob.value=mustMoney(fd,'value');
+    else{
+      ob.units=mustMoney(fd,'units');
+      if(marketLinked){
+        const avg=safeNum(fd.get('avgPrice'));
+        if(avg!==null && avg<=0)throw Error('Prezzo medio deve essere positivo.');
+        if(asset.kind!=='pension')ob.avgPrice=avg;
+        if(asset.kind==='fund'&&latest?.mode==='units'&&Number(latest.price)>0)ob.price=Number(latest.price);
+      }else ob.price=mustMoney(fd,'price');
+    }
+    const reported=safeNum(fd.get('reportedGain'));
+    if(String(fd.get('reportedGain')??'').trim()!==''&&reported===null)throw Error('Guadagno/perdita non valido.');
+    if(reported!==null)ob.reportedGain=eurRound(reported);
+    const pct=safeNum(fd.get('reportedGainPct'));
+    if(String(fd.get('reportedGainPct')??'').trim()!==''&&pct===null)throw Error('Percentuale non valida.');
+    if(pct!==null&&reported===null)throw Error('Indica anche il rendimento in euro.');
+    if(pct!==null)ob.reportedGainPct=pct;
+    ob.includedEventIds=allEvents(state,date).filter(z=>z.date===date&&z.type==='investment'&&z.assetId===id).map(z=>z.id);
+    asset.observations=insertObservation(asset.observations,ob);
+    const capital=safeNum(fd.get('capital'));
+    if(capital!==null){if(capital<0)throw Error('Capitale versato non valido.');asset.investedBeforeStart=capital;}
+    asset.isin=forField(fd,'isin');
+    if(etf){
+      const ticker=forField(fd,'ticker').toUpperCase();
+      if(!/^[A-Z0-9^._-]{2,24}$/.test(ticker))throw Error('Ticker non valido.');
+      asset.ticker=ticker;
+    }
+    persist();notify('Posizione aggiornata. Premi Salva per scrivere il JSON.');
+  });
+}
+function viewAsset(id){
+  const asset=state.investments.find(a=>a.id===id);if(!asset)return;
+  const v=computeAt(state,dNow()).assets[id];
+  const line=(label,value)=>`<div class="value-list"><span>${e(label)}</span><strong>${value}</strong></div>`;
+  const isETF=asset.kind==='etf',marketLinked=isETF||asset.kind==='fund'||asset.kind==='pension';
+  const problem=v.discrepancy!==null&&Math.abs(v.discrepancy)>=.02;
+  const resultSource=v.gainSource==='intermediary'?'Inserito dalla banca':v.gainSource==='average-cost'?'Da prezzo medio × quote':'Calcolato dal capitale';
+  const dprice=v.marketPrice!==null?navMoney(v.marketPrice):'Non disponibile';
+  let warning='';
+  if(isETF&&!v.marketPrice)warning=`<div class="full inline-alert"><strong>⚠ Prezzo di mercato mancante.</strong> Il prezzo medio di acquisto è noto, ma non può essere utilizzato per valorizzare il tuo patrimonio. Premi «Inserisci prezzo corrente» o «Aggiorna prezzi ora».</div>`;
+  if(isETF&&v.quoteStale&&v.marketPrice!==null)warning=`<div class="full inline-alert">⚠ Il prezzo usato è precedente o non verificato di recente (${fmtDate(v.asOf)}). Non è una quotazione in tempo reale certificata. Verificalo su Trade Republic.</div>`;
+  if(asset.kind==='pension'&&v.quoteStale&&v.marketPrice!==null)warning+=`<div class="full inline-alert">⚠ Ultima quota disponibile del ${fmtDate(v.asOf)}. La pubblicazione previdenziale può essere mensile o settimanale. Non è il saldo dell'area riservata.</div>`;
+  if(id==='previbank' && v.quantity!==null)warning+=`<div class="full inline-alert info">Previbank: profilo <strong>Finanziario</strong> (circa 80% azionario), non un comparto denominato «Azionario». Le quote del fondo hanno data ${fmtDate(v.positionAsOf)}; il NAV ha data ${fmtDate(v.asOf)}. I contributi confermati successivi non generano nuove quote finché non conosci quelle realmente assegnate.</div>`;
+  if(id==='allianz-pensione' && v.quoteSource?.includes('NON live'))warning+=`<div class="full inline-alert">⚠ Ultimo valore pubblico verificato, NON sincronizzato. L'aggiornamento automatico può essere bloccato (403); non verrà spacciato per un prezzo corrente.</div>`;
+  if(problem)warning+=`<div class="full inline-alert">⚠ Differenza tra rendimento riportato dalla banca e calcolo: ${money(Math.abs(v.discrepancy))}. Usa dati della stessa data; controlla il costo medio e le commissioni.</div>`;
+  const html=`<div class="full"><div class="colored-box"><div class="micro">Controvalore patrimoniale</div><div class="number">${money(v.value)}</div><div class="micro">${e(asset.provider)} · ${v.value!==null?(isETF?'prezzo usato rilevato il ':'valorizzato al ')+fmtDate(v.asOf):'prezzo corrente ancora da inserire'}</div></div></div>`+
+    `<div class="full">${line('Quote possedute',fmtNum(v.quantity))}`+(asset.kind==='pension'?line('Quote rilevate al',fmtDate(v.positionAsOf)):'')+
+    (isETF?line('Prezzo MEDIO di acquisto',money(v.averagePrice)):'')+
+    `${line('Prezzo CORRENTE per quota',`<span style="color:${v.marketPrice===null?'#b66925':'#19253e'}">${dprice}</span>`)}`+
+    (marketLinked?line('Fonte quotazione',`<span class="micro">${e(v.quoteSource||'Non ancora recuperata')}</span>`):'')+
+    (marketLinked&&v.quoteCheckedAt?line('Recuperato il',`<span class="micro">${e(new Date(v.quoteCheckedAt).toLocaleString('it-IT'))} · orario di mercato non certificato</span>`):'')+
+    `${asset.kind==='pension'?'':line('Costo della posizione (quote × medio)',money(v.costBasis))}`+
+    `${line('Capitale versato registrato',money(v.invested))}`+
+    `${line('Guadagno / perdita calcolato',`<span class="${valClass(v.calculatedGain||0)}">${money(v.calculatedGain)}${v.gainPct!=null?` (${percentage(v.gainPct)})`:''}</span>`)}`+
+    `${v.reportedGain!==null?line('Guadagno/perdita indicato dal broker',`<span class="${valClass(v.reportedGain)}">${money(v.reportedGain)}</span>`):''}`+
+    `${v.gainFromContributions!==null&&v.gainFromAverage!==null?line('Differenza controvalore − capitale versato',money(v.gainFromContributions)):''}`+
+    `${line('Versamenti senza nuove quote ufficiali',money(v.unallocated))}`+
+    `<div class="micro lower">Risultato principale: ${e(resultSource)}. Il prezzo di acquisto NON viene mai usato come quotazione di mercato.</div></div>`+
+    warning+
+    (marketLinked?`<div class="full" style="display:flex;flex-wrap:wrap;gap:9px"><button type="button" class="btn secondary" data-action="manualquote" data-id="${e(id)}">✎ Inserisci valore quota</button>${id==='allianz-pensione'?'<button type="button" class="btn secondary" data-action="pensionline">Scegli linea Allianz</button>':''}${id==='previbank'?'<button type="button" class="btn secondary" data-action="fixprevibank">Correggi posizione Previbank</button>':''}<button type="button" class="btn ghost" data-action="refreshquotes">↻ Aggiorna quotazioni</button></div>`:'');
+  modal(e(asset.name),'Dettaglio patrimoniale della posizione.',html,'Aggiorna posizione',()=>{closeModal();updateAsset(id);});
+}
+function editPlan(id){const p=state.plans.find(x=>x.id===id);if(!p)return;const acct=[['allianz','Allianz Bank'],['tr','Trade Republic'],['cash','Contanti'],['sella','Banca Sella'],['external','Busta paga / TFR / datore']];const form=input('Importo di ogni rata (€)','amount','number',p.amount,'step="0.01" min="0" required')+input('Data prima applicazione','start','date',p.startDate,`min="${START_DATE}" required`)+input('Giorno del mese · prima rata','day1','number',p.days[0]||'','min="1" max="31" step="1" required')+(p.frequency==='twice'?input('Giorno del mese · seconda rata','day2','number',p.days[1]||'','min="1" max="31" step="1" required'):'')+select('Fonte del versamento','source',acct,p.source)+input('Costo d’ingresso (%)','fee','number',p.feePercent||0,'step="0.01" min="0" max="100"')+select('Attivazione','active',[['yes','Sì, attiva il piano'],['no','No, lascialo sospeso']],p.active?'yes':'no')+`<div class="full insight">Se il giorno non esiste in un mese (es. 31 febbraio), la scadenza sarà l'ultimo giorno del mese. Le scadenze sono <strong>previste, non eseguite</strong>, finché non confermi importo e quote reali. Le regole decorrono non prima del 16/10/2026.</div>`;
+modal(`Piano · ${e(p.label)}`,'Una o due scadenze mensili, senza modificare i saldi prima della conferma.',form,'Salva regola',fd=>{const amount=mustMoney(fd,'amount'),startDate=mustStart(fd,'start'),day1=Number(fd.get('day1')),day2=p.frequency==='twice'?Number(fd.get('day2')):null;const valid=d=>Number.isInteger(d)&&d>=1&&d<=31;if(!valid(day1)||(day2!==null&&!valid(day2)))throw Error('Indica giorni del mese tra 1 e 31.');if(day1===day2)throw Error('I due giorni devono essere diversi.');p.amount=amount;p.startDate=startDate;p.days=day2===null?[day1]:[day1,day2];p.source=forField(fd,'source');p.feePercent=mustMoney(fd,'fee');p.active=forField(fd,'active')==='yes';persist();notify('Piano mensile aggiornato.');});}
+function confirmPlan(id){const o=generateRecurring(state,dNow()).find(z=>z.id===id);if(!o)return;const current=state.planOverrides[id]||{};const form=input('Data della rata','date','text',o.date,'readonly')+input('Importo effettivo (€)','amount','number',o.amount,'step="0.01" min="0" required')+input('Quote realmente acquistate (facoltativo)','units','number',current.units??'','step="0.00000001" min="0"','Inserisci le quote se disponibili; altrimenti il valore resta provvisorio.')+select('Stato','status',[['estimated','Previsto / da confermare'],['confirmed','Confermato da estratto conto'],['skipped','Non eseguito / saltato']],o.status)+`<div class="full insight">Una rata confermata entra nei conteggi e non deve essere registrata una seconda volta tra i versamenti straordinari. Se la salti, non cambierà saldi o investimenti.</div>`;modal(`Versamento ${fmtDate(o.date)}`,e(o.label),form,'Aggiorna rata',fd=>{const amount=mustMoney(fd,'amount'),status=forField(fd,'status'),units=safeNum(fd.get('units'));if(units!==null&&units<0)throw Error('Quote non valide.');state.planOverrides[id]={status,amount,units};persist();notify('Rata aggiornata.');});}
+function addInvestment(){const options=state.investments.map(a=>[a.id,a.name]),sources=[['allianz','Allianz Bank'],['tr','Trade Republic'],['cash','Contanti'],['sella','Banca Sella'],['external','Trattenuta/TFR/datore']];modal('Versamento straordinario','Registra un acquisto o un versamento fuori dal piano programmato.',input('Data','date','date',dNow(),`required`)+select('Investimento','assetId',options,'jpm')+input('Importo versato (€)','amount','number','','step="0.01" min="0" required')+select('Conto di provenienza','source',sources,'allianz')+input('Quote acquistate (facoltativo)','units','number','','step="0.00000001" min="0"')+input('Costo d’ingresso (%)','fee','number','0','step="0.01" min="0" max="100"')+input('Nota','note','text','','maxlength="120"'),'Registra versamento',fd=>{const date=mustAnyDate(fd,'date'),amount=mustMoney(fd,'amount'),assetId=forField(fd,'assetId'),source=forField(fd,'source'),units=safeNum(fd.get('units'));if(!state.investments.some(a=>a.id===assetId))throw Error('Investimento sconosciuto.');const fee=mustMoney(fd,'fee');if(units!==null&&units<0)throw Error('Quote non valide.');const matched=generateRecurring(state,date).some(o=>o.assetId===assetId&&o.date===date&&o.status!=='skipped');
+if(matched && !confirm('Esiste già una rata programmata per questo investimento alla stessa data. Per evitare un doppio versamento usa la sezione Versamenti automatici. Confermi che questo è un acquisto AGGIUNTIVO?')) return;
+state.movements.push({id:newId(),date,type:'investment',assetId,source,amount,units,feePercent:fee,status:statusForDate(date),note:forField(fd,'note')});persist();notify('Versamento registrato.');});}
+function addCard(){modal('Spesa con carta','L’acquisto aumenta subito il debito della carta senza ridurre la liquidità Allianz.',input('Data acquisto','date','date',dNow(),`required`)+input('Importo (€)','amount','number','','min="0.01" step="0.01" required')+input('Descrizione (facoltativa)','note','text','','maxlength="120"')+`<div class="full insight">Se non vuoi registrare tutti gli acquisti, puoi inserire il totale del mese in una sola operazione. L'addebito differito si registra separatamente, così non conteggiamo la spesa due volte.</div>`,'Registra acquisto',fd=>{const date=mustAnyDate(fd,'date'),amount=mustMoney(fd,'amount');if(!positive(amount))throw Error('Importo superiore a zero richiesto.');state.movements.push({id:newId(),date,type:'card_purchase',amount,status:statusForDate(date),note:forField(fd,'note')});persist();notify('Spesa con carta registrata.');});}
+function cardOpening(){const c=state.card;modal('Debito carta al 16/10/2026','Indica l’importo già speso con carta ma non ancora addebitato alla data zero.',input('Debito iniziale (€)','debt','number',c.openingDebt??'','min="0" step="0.01" required')+select('Periodo principale di riferimento','period',[['2026-09','Settembre 2026 · scadenza 15/10'],['2026-10','Ottobre 2026 · scadenza 15/11']],c.openingPeriod||'2026-10')+`<div class="full insight">Se il debito iniziale comprende più periodi, questa è una semplificazione: in fase iniziale puoi registrarlo in un solo periodo e correggere quando hai gli estratti conto.</div>`,'Salva debito iniziale',fd=>{state.card.openingDebt=mustMoney(fd,'debt');state.card.openingPeriod=forField(fd,'period');persist();notify('Debito iniziale registrato.');});}
+function payCard(period){const x=computeAt(state,dNow()),remaining=Math.max(0,x.card.byPeriod[period]||0);modal('Registra addebito carta',`Periodo spese ${period} · addebito previsto ${fmtDate(cardDueDate(period))}`,input('Data effettiva addebito','date','date',dNow(),`min="${START_DATE}" max="${dNow()}" required`)+input('Importo addebitato (€)','amount','number',remaining,'min="0" step="0.01" required')+`<div class="full insight">Il pagamento riduce sia il saldo Allianz Bank sia il debito della carta: il patrimonio netto <strong>non diminuisce due volte</strong>.</div>`,'Registra pagamento',fd=>{const date=mustDate(fd,'date'),amount=mustMoney(fd,'amount');if(amount>remaining+.01)throw Error('Il pagamento supera il debito residuo del periodo.');state.movements.push({id:newId(),date,type:'card_payment',from:'allianz',period,amount,note:`Addebito carta ${period}`});persist();notify('Addebito carta registrato.');});}
+function addPartner(){modal('Versamento partner · Sella','Denaro versato dalla tua ragazza sul conto condiviso.',input('Data del versamento','date','date',dNow(),`required`)+input('Importo (€)','amount','number','','min="0.01" step="0.01" required')+input('Nota','note','text','Versamento partner','maxlength="120"'),'Registra versamento',fd=>{const date=mustAnyDate(fd,'date'),amount=mustMoney(fd,'amount');if(!positive(amount))throw Error('Importo superiore a zero richiesto.');state.movements.push({id:newId(),date,type:'income',to:'sella',origin:'partner',amount,status:statusForDate(date),note:forField(fd,'note')});persist();notify('Versamento sul conto comune registrato.');});}
+function refreshMovementFields(){
+  const form=document.getElementById('activeForm');
+  if(!form||!form.querySelector('[data-move-show]'))return;
+  const type=form.elements.namedItem('type')?.value||'transfer';
+  const help={
+    income:'L’importo viene aggiunto soltanto al conto che riceve il denaro.',
+    expense:'L’importo viene sottratto soltanto al conto con cui hai pagato.',
+    transfer:'Il denaro esce dal conto di partenza ed entra in quello di destinazione. Non è una spesa.',
+    investment:'Il versamento esce dal conto selezionato ed entra nel PAC o fondo pensione scelto. Le quote effettive si possono specificare nei dettagli facoltativi. Per le rate già programmate usa invece «Versamenti automatici», per non registrarle due volte.',
+    card_purchase:'La spesa aumenta il debito della carta Allianz, senza prelevare immediatamente dal conto. L’addebito sarà registrato separatamente.'
+  };
+  for(const slot of form.querySelectorAll('[data-move-show]')){
+    const visible=slot.dataset.moveShow.split(' ').includes(type);
+    slot.hidden=!visible;
+    for(const el of slot.querySelectorAll('input,select,textarea')){
+      el.disabled=!visible;
+      if(el.hasAttribute('data-move-required'))el.required=visible;
+    }
+  }
+  const hint=form.querySelector('[data-move-help]');
+  if(hint)hint.textContent=help[type]||'';
+}
+function addMovement(){
+  const opts=[['income','Entrata sul conto'],['expense','Uscita / spesa'],['transfer','Trasferimento tra conti'],['investment','Incremento PAC / fondo pensione'],['card_purchase','Acquisto con carta di credito']];
+  const accountOptions=state.accounts.map(a=>[a.id,a.name]);
+  const sourceOptions=[...accountOptions,['external','Trattenuta busta paga / TFR / datore']];
+  const investmentsOptions=state.investments.map(a=>[a.id,a.name]);
+  const show=(when,html,cls='')=>`<div class="movement-slot ${cls}" data-move-show="${when}" hidden>${html}</div>`;
+  const form=
+    input('Data operazione','date','date',dNow(),`required`)+
+    select('Tipologia movimento','type',opts,'transfer')+
+    input('Importo (€)','amount','number','','min="0.01" step="0.01" required')+
+    show('expense transfer',select('Conto di partenza','from',accountOptions,'allianz'))+
+    show('income transfer',select('Conto di destinazione','to',accountOptions,'sella'))+
+    show('investment',select('Conto di uscita','source',sourceOptions,'allianz'))+
+    show('investment',select('PAC / fondo pensione di destinazione','assetId',investmentsOptions,'jpm'))+
+    show('investment',`<details class="movement-advanced"><summary>Dettagli dell’investimento (facoltativi)</summary><div class="movement-advanced-fields">${input('Quote realmente acquistate','units','number','','min="0" step="0.00000001"','Lascia vuoto se non le conosci ancora.')}${input('Costo d’ingresso (%)','fee','number','0','min="0" max="100" step="0.01"')}</div></details>`,'full')+
+    input('Descrizione (facoltativa)','note','text','','maxlength="120"')+
+    `<div class="full insight movement-context" data-move-help aria-live="polite"></div>`;
+  modal('Nuovo movimento','Seleziona la tipologia: vedrai solo i campi necessari.',form,'Registra movimento',fd=>{
+    const date=mustAnyDate(fd,'date'), amount=mustMoney(fd,'amount'),type=forField(fd,'type'),note=forField(fd,'note');
+    if(!positive(amount))throw Error('Inserisci un importo maggiore di zero.');
+    const accountExists=id=>state.accounts.some(a=>a.id===id);
+    if(type==='income'){
+      const to=forField(fd,'to');
+      if(!accountExists(to))throw Error('Seleziona il conto di destinazione.');
+      state.movements.push({id:newId(),date,type,amount,to,note,status:statusForDate(date)});
+    }else if(type==='expense'){
+      const from=forField(fd,'from');
+      if(!accountExists(from))throw Error('Seleziona il conto di partenza.');
+      state.movements.push({id:newId(),date,type,amount,from,note,status:statusForDate(date)});
+    }else if(type==='transfer'){
+      const from=forField(fd,'from'),to=forField(fd,'to');
+      if(!accountExists(from)||!accountExists(to))throw Error('Seleziona entrambi i conti.');
+      if(from===to)throw Error('I due conti devono essere diversi.');
+      state.movements.push({id:newId(),date,type,amount,from,to,note,status:statusForDate(date)});
+    }else if(type==='investment'){
+      const source=forField(fd,'source'),assetId=forField(fd,'assetId');
+      const units=safeNum(fd.get('units')),fee=safeNum(fd.get('fee'))??0;
+      if(!accountExists(source)&&source!=='external')throw Error('Seleziona il conto di uscita.');
+      if(!state.investments.some(a=>a.id===assetId))throw Error('Seleziona il PAC o fondo pensione.');
+      if(units!==null&&units<0)throw Error('Le quote non possono essere negative.');
+      if(fee<0||fee>100)throw Error('Il costo d’ingresso deve essere compreso tra 0% e 100%.');
+      const existing=generateRecurring(state,date).some(z=>z.assetId===assetId&&z.date===date&&z.status!=='skipped');
+      if(existing&&!confirm('Alla stessa data è già prevista una rata automatica per questo investimento. Questa è un’operazione aggiuntiva, distinta dalla rata programmata?'))return false;
+      state.movements.push({id:newId(),date,type,assetId,source,amount,units,feePercent:fee,status:statusForDate(date),note});
+    }else if(type==='card_purchase'){
+      state.movements.push({id:newId(),date,type,amount,note,status:statusForDate(date)});
+    }else throw Error('Tipologia non riconosciuta.');
+    persist();notify(date>dNow()?'Operazione futura: verrà contabilizzata automaticamente dal '+fmtDate(date)+', senza conferma. Premi Salva.':date<START_DATE?'Operazione anteriore alla data zero: registrata solo per memoria.':'Movimento registrato. Premi Salva in alto per scriverlo sul PC.');
+  });
+  refreshMovementFields();
+}
+function downloadText(name,text,mimetype='application/json'){const blob=new Blob([text],{type:mimetype});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function csvCell(x){let t=String(x??'');if(/^[=+@-]/.test(t)&&!Number.isFinite(Number(t)))t="'"+t;return '"'+t.replaceAll('"','""')+'"';}
+function csvRows(rows){return '\ufeff'+rows.map(row=>row.map(csvCell).join(';')).join('\r\n');}
+function exportJSON(){downloadText(`MyWealth_backup_${dNow()}.json`,JSON.stringify(state,null,2));notify('Backup completo scaricato.');}
+function exportCSV(){const ev=allEvents(state,dNow()),headers=['Data','Tipologia','Descrizione','Importo EUR','Da','A','Asset','Stato','Scadenza rata'];const rows=ev.map(z=>[z.date,z.type,z.note||z.label||'',z.amount,z.from||z.source||'',z.to||'',z.assetId||'',z.status||'confermato',z.planId||'']);downloadText(`MyWealth_movimenti_${dNow()}.csv`,csvRows([headers,...rows]),'text/csv;charset=utf-8');notify('CSV esportato.');}
+function exportHistory(){const h=history(state,dNow());downloadText(`MyWealth_storico_${dNow()}.csv`,csvRows([['Data','Patrimonio personale EUR','Dati completi','Conto comune EUR'],...h.map(x=>[x.date,x.known?x.net:'',x.known?'SI':'NO',x.shared??''])]),'text/csv;charset=utf-8');notify('Storico esportato.');}
+function openImport(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=async()=>{if(!input.files?.[0])return;try{const text=await input.files[0].text();if(text.length>10_000_000)throw Error('Backup troppo grande.');const parsed=JSON.parse(text);assertValidState(parsed);if(!confirm('Importare questo backup? I dati attuali del browser verranno sostituiti. Esportali prima per sicurezza.'))return;state=normalizeState(parsed);persist();notify('Backup importato correttamente.');}catch(err){alert(`Importazione non riuscita: ${err.message}`);}};input.click();}
+function confirmScheduled(id){
+  const ev=state.movements.find(o=>o.id===id&&o.status==='planned');
+  if(!ev)return;
+  if(ev.date>dNow())throw Error('Non puoi verificare un’operazione con data futura.');
+  if(!confirm('Hai verificato sull’estratto conto il movimento di '+money(ev.amount)+' del '+fmtDate(ev.date)+'?'))return;
+  ev.status='confirmed';persist();notify('Movimento segnato come verificato. Il totale rimane invariato. Premi Salva.');
+}
+function skipScheduled(id){
+  const ev=state.movements.find(o=>o.id===id&&o.status==='planned');
+  if(!ev || ev.date>dNow())return;
+  if(!confirm('Segnare questo movimento come NON avvenuto? Verrà tolto dai conteggi senza cancellarlo dallo storico.'))return;
+  ev.status='skipped';persist();notify('Operazione non avvenuta: esclusa dai saldi. Premi Salva.');
+}
+function reactivateScheduled(id){
+  const ev=state.movements.find(o=>o.id===id&&o.status==='skipped');
+  if(!ev)return;
+  if(!confirm('Ripristinare il movimento programmato? Rientrerà nei conteggi dalla data prevista.'))return;
+  ev.status='planned';persist();notify('Movimento ripristinato. Premi Salva.');
+}
+function removeEvent(id){const rec=state.movements.find(e=>e.id===id);if(!rec)return;if(!confirm(`Eliminare il movimento del ${fmtDate(rec.date)} da ${money(rec.amount)}? Potrebbe essere necessario aggiornare i saldi verificati dopo la modifica.`))return;state.movements=state.movements.filter(e=>e.id!==id);persist();notify('Movimento eliminato.');}
+function saveUpdateRepository(){
+  const input=document.getElementById('githubRepoInput');
+  if(!input)return;
+  const repo=input.value.trim();
+  if(repo && (!/^[A-Za-z0-9_.-]{1,60}\/[A-Za-z0-9_.-]{1,100}$/.test(repo)||repo.includes('..')))throw Error('Usa il formato proprietario/repository GitHub.');
+  updateRepository=repo;
+  localStorage.setItem(UPDATE_REPO_KEY,repo);
+  updateInfo=null;render();notify(repo?'Repository salvato per gli aggiornamenti.':'Repository rimosso.');
+}
+async function checkAppUpdate(){
+  if(!localServerReady)return alert('Apri My Wealth con AVVIA_MY_WEALTH.bat per usare gli aggiornamenti.');
+  if(!updateRepository)return alert('Prima imposta un repository GitHub nel formato proprietario/nome.');
+  updateLoading=true;updateInfo=null;render();
+  try{updateInfo=await apiJSON('/api/update/check?repo='+encodeURIComponent(updateRepository));}
+  catch(err){updateInfo={error:err.message};}
+  finally{updateLoading=false;render();}
+}
+async function installAppUpdate(){
+  if(!localServerReady||!updateRepository||!updateInfo?.available||!updateInfo?.canInstall)return;
+  if(saveDirty)return alert('Prima premi Salva: ci sono modifiche non ancora scritte nel tuo archivio locale.');
+  if(!confirm('Installare My Wealth '+updateInfo.latest+' dal repository '+updateRepository+'?\n\nVerranno sostituiti solo i file dell’app: i tuoi dati nei Documenti restano invariati. Dopo l’installazione dovrai riavviare il programma.'))return;
+  updateLoading=true;render();
+  try{
+    const result=await apiJSON('/api/update/install',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({repo:updateRepository,tag:updateInfo.latest})});
+    updateInfo={...updateInfo,available:false};
+    alert('My Wealth '+result.version+' installata!\n\nChiudi la finestra nera del servizio locale e riavvia AVVIA_MY_WEALTH.bat. Il JSON nei Documenti non è stato modificato.');
+  }catch(err){alert('Aggiornamento non riuscito: '+err.message+'\nI dati nei Documenti restano al sicuro.');}
+  finally{updateLoading=false;render();}
+}
+function resetAll(){if(!confirm('Vuoi davvero cancellare tutti i dati My Wealth salvati su questo dispositivo?'))return;if(!confirm('Ultima conferma: hai già esportato un backup?'))return;state=blankState();persist();view='home';render();notify('I dati locali sono stati azzerati.');}
+// All event handlers are attached once; subsequent page renders retain behavior.
+document.addEventListener('click',evt=>{const t=evt.target.closest('[data-action]');if(!t)return;const action=t.dataset.action,id=t.dataset.id;try{switch(action){case 'nav':view=id;render();window.scrollTo(0,0);break;case 'chart':chartRange=id;render();break;case 'setaccount':updateAccount(id);break;case 'viewasset':viewAsset(id);break;case 'setasset':updateAsset(id);break;case 'gotoplans':view='plans';render();break;case 'editplan':editPlan(id);break;case 'confirmplan':confirmPlan(id);break;case 'addinvestment':addInvestment();break;case 'addcard':addCard();break;case 'cardopening':cardOpening();break;case 'paycard':payCard(id);break;case 'addpartner':addPartner();break;case 'addmovement':addMovement();break;case 'closemodal':closeModal();break;case 'refreshquotes':refreshMarketQuotes(true);break;case 'manualquote':closeModal();setManualQuote(id);break;case 'marketsettings':marketSettingsModal();break;case 'pensionline':closeModal();configurePensionLine();break;case 'fixprevibank':correctPrevibankPosition();break;case 'savearchive':saveArchive();break;case 'openarchive':loadArchive();break;case 'unlinkarchive':forgetFileLink();break;case 'exportjson':exportJSON();break;case 'exportcsv':exportCSV();break;case 'exporthistory':exportHistory();break;case 'importjson':openImport();break;case 'recoverbackup':recoverLocalBackup();break;case 'confirmscheduled':confirmScheduled(id);break;case 'skipscheduled':skipScheduled(id);break;case 'reactivatescheduled':reactivateScheduled(id);break;case 'removeevent':removeEvent(id);break;case 'saverepo':saveUpdateRepository();break;case 'checkupdate':checkAppUpdate();break;case 'installupdate':installAppUpdate();break;case 'reset':resetAll();break;}}catch(error){alert(error.message);}});
+document.addEventListener('keydown',evt=>{if(evt.key==='Escape')closeModal();if((evt.key==='Enter'||evt.key===' ')&&evt.target.matches('.data-row[role="button"]')){evt.preventDefault();evt.target.click();}});
+document.addEventListener('change',evt=>{if(evt.target.id==='movementFilter'){movementFilter=evt.target.value;render();}else if(evt.target.id==='f-type'&&evt.target.closest('#activeForm')){refreshMovementFields();}});
+document.addEventListener('submit',evt=>{if(evt.target.id!=='activeForm')return;evt.preventDefault();if(!modalSave)return;try{const originalForm=evt.target;const save=modalSave;const result=save(new FormData(originalForm));if(result===false)return;if(originalForm.isConnected)closeModal();}catch(error){alert(error.message);}});
+render();
+initializeLocalArchive();
+// Refresh on opening (if online), and periodically while this HTML remains open.
+setTimeout(()=>refreshMarketQuotes(false).catch(error=>console.warn('Feed prezzi:',error)),1200);
+setInterval(()=>refreshMarketQuotes(false).catch(error=>console.warn('Feed prezzi:',error)),QUOTE_RETRY_MS);
+// Date-driven effective balances work without mutating the JSON. If the app
+// stays open overnight, refresh on the Rome calendar-day rollover.
+let lastRenderedRomeDay=dNow();
+function refreshOnCalendarDay(){
+  const current=dNow();
+  if(current!==lastRenderedRomeDay){lastRenderedRomeDay=current;render();}
+}
+setInterval(refreshOnCalendarDay,30000);
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden){
+    refreshOnCalendarDay();
+    refreshMarketQuotes(false).catch(error=>console.warn('Feed prezzi:',error));
+  }
+});
+
+</script>
+</body>
+</html>
