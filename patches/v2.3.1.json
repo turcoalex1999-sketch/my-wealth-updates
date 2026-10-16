@@ -1,0 +1,1 @@
+{"from":"v2.3.0","to":"v2.3.1","operations":[{"file":"My_Wealth.html","find":"Repository configurato: premi Controlla aggiornamenti.","replace":"Repository GitHub collegato. Premi Controlla aggiornamenti, poi Installa aggiornamento se disponibile."},{"file":"My_Wealth.html","find":"const APP_VERSION='2.3.0';","replace":"const APP_VERSION='2.3.1';"}]}
