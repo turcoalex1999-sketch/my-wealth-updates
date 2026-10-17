@@ -1,0 +1,54 @@
+name: Verify My Wealth update integrity
+on:
+  push:
+    paths:
+      - 'manifest.json'
+      - 'patches/**'
+      - '.github/workflows/verify-manifest.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify patch digests and complete version chain
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, re
+          base = Path('.')
+          manifest = json.loads((base/'manifest.json').read_text('utf-8'))
+          assert manifest['schema'] == 1
+          assert manifest['repository'] == 'turcoalex1999-sketch/my-wealth-updates'
+          assert re.fullmatch(r'v\d+\.\d+\.\d+', manifest['latest'])
+          edges = {}
+          for step in manifest['patches']:
+              src, dst, path = step['from'], step['to'], step['path']
+              assert src not in edges, f'Ambiguous next patch for {src}'
+              assert re.fullmatch(r'patches/v\d+\.\d+\.\d+\.json', path)
+              assert path == f'patches/{dst}.json'
+              raw = (base/path).read_bytes()
+              sha = hashlib.sha256(raw).hexdigest()
+              assert sha.lower() == step['sha256'].lower(), f'SHA mismatch: {path}: {sha}'
+              patch = json.loads(raw)
+              assert patch['from'] == src and patch['to'] == dst
+              assert 0 < len(patch['operations']) <= 80
+              for op in patch['operations']:
+                  assert op['file'] in {'My_Wealth.html','mywealth_server.ps1','AVVIA_MY_WEALTH.bat','VERIFICA_SCRIPT.ps1','LEGGIMI_PRIMA.txt'}
+                  assert len(op['find']) > 0
+                  assert len(op['find']) <= 60000 and len(op['replace']) <= 100000
+              edges[src] = dst
+              print(path, 'SHA256 OK', sha)
+          cur = 'v2.3.0'
+          for _ in range(60):
+              if cur == manifest['latest']: break
+              assert cur in edges, f'Incomplete chain from {cur}'
+              nxt = edges[cur]
+              assert tuple(map(int,nxt[1:].split('.'))) > tuple(map(int,cur[1:].split('.')))
+              cur = nxt
+          assert cur == manifest['latest']
+          print('VALID UPDATE CHAIN:', 'v2.3.0 ->', cur)
+          PY
