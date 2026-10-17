@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "repository": "turcoalex1999-sketch/my-wealth-updates",
-  "latest": "v2.3.3",
+  "latest": "v2.3.4",
   "patches": [
     {
       "from": "v2.3.0",
@@ -20,6 +20,12 @@
       "to": "v2.3.3",
       "path": "patches/v2.3.3.json",
       "sha256": "4443195cc2d59eb611ffd45e1e83665bd17d119c05055bed03ab66da0f256c95"
+    },
+    {
+      "from": "v2.3.3",
+      "to": "v2.3.4",
+      "path": "patches/v2.3.4.json",
+      "sha256": "19e76b769dbd4529a0416f53ee03c97c64f355fec48b2a0b7053ab15dbddb65f"
     }
   ]
 }
