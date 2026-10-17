@@ -1,0 +1,11 @@
+{
+  "product": "Allianz Previdenza",
+  "line": "azionaria",
+  "instrument": "0P0000CX0Z",
+  "date": "2026-10-07",
+  "price": 35.252,
+  "currency": "EUR",
+  "source": "Investing.com (dato pubblico verificato il 17/10/2026)",
+  "kind": "historical_public_reference",
+  "updatedAt": "2026-10-17"
+}
