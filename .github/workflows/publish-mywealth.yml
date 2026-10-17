@@ -1,0 +1,51 @@
+name: Publish My Wealth Windows release
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'release-source/v2.2.1/**'
+      - '.github/workflows/publish-mywealth.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and check package
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,gzip,zipfile,hashlib
+          root=Path('release-source/v2.2.1')
+          html=(root/'My_Wealth.html').read_text(encoding='utf-8')
+          server=gzip.decompress(base64.b64decode((root/'server.gz.b64').read_text())).decode('utf-8-sig')
+          assert 'APP_VERSION=\'2.2.1\'' in html
+          assert 'function GetUpdateInfo' in server
+          files={
+            'My_Wealth.html':html.encode('utf-8'),
+            'mywealth_server.ps1':('\ufeff'+server).encode('utf-8'),
+            'APP_VERSION.txt':b'v2.2.1\n',
+            'AVVIA_MY_WEALTH.bat':b'@echo off\r\ncd /d "%~dp0"\r\npowershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0VERIFICA_SCRIPT.ps1"\r\nif errorlevel 1 (pause & exit /b 1)\r\npowershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0mywealth_server.ps1"\r\nif errorlevel 1 pause\r\n',
+            'VERIFICA_SCRIPT.ps1':b"$ErrorActionPreference = 'Stop'\n$errors = $null\n$tokens = $null\n[void][System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot 'mywealth_server.ps1'),[ref]$tokens,[ref]$errors)\nif (@($errors).Count -gt 0) { Write-Host 'Errore sintassi PowerShell' -ForegroundColor Red; exit 1 }\nexit 0\n",
+            'LEGGIMI_PRIMA.txt':b'My Wealth 2.2.1 - release per aggiornamento dall app 2.2. Il file dei dati rimane in Documenti\\My Wealth.\n'
+          }
+          assert len(files)==6
+          out=Path('My_Wealth_Windows.zip')
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED) as z:
+            for name,data in files.items(): z.writestr(name,data)
+          digest=hashlib.sha256(out.read_bytes()).hexdigest()
+          Path('My_Wealth_Windows.zip.sha256').write_text(digest+'  My_Wealth_Windows.zip\n')
+          print('SHA256:',digest)
+          PY
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v2.2.1 >/dev/null 2>&1; then
+            echo "Release v2.2.1 already exists"
+          else
+            gh release create v2.2.1 My_Wealth_Windows.zip My_Wealth_Windows.zip.sha256 --title "My Wealth v2.2.1" --notes "Riparazione Previbank, NAV Allianz Azionaria, aggiornamenti dal pulsante. Archivio locale non incluso." --latest
+          fi
