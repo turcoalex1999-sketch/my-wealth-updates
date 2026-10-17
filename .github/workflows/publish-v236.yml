@@ -1,0 +1,47 @@
+name: Publish checked My Wealth v2.3.6 patch
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'patches-compressed/v2.3.6.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unpack-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack patch and update manifest
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64,gzip,json,hashlib
+          packed=Path('patches-compressed/v2.3.6.txt')
+          raw=gzip.decompress(base64.b64decode(packed.read_text().strip()))
+          expected='ea4cf838dc094c37c92d93fefebbae81f1d84a4e12e6d1f7b56e27a16f41fe84'
+          assert hashlib.sha256(raw).hexdigest()==expected, 'Patch integrity check failed'
+          payload=json.loads(raw)
+          assert payload['from']=='v2.3.5' and payload['to']=='v2.3.6'
+          assert len(payload['operations'])==54
+          assert all(op['file']=='My_Wealth.html' and op['find'] and op['replace'] for op in payload['operations'])
+          rawtext=raw.decode('utf-8')
+          assert not any(s in rawtext for s in ('20.128367','1227.43','70.35','97.004','2681.77')), 'No personal position data permitted'
+          target=Path('patches/v2.3.6.json')
+          assert not target.exists(), 'Refuse to overwrite already published patch'
+          target.write_bytes(raw)
+          manifestpath=Path('manifest.json')
+          manifest=json.loads(manifestpath.read_text('utf-8'))
+          assert manifest['latest']=='v2.3.5', 'Manifest must be at v2.3.5'
+          manifest['latest']='v2.3.6'
+          manifest['patches'].append({'from':'v2.3.5','to':'v2.3.6','path':'patches/v2.3.6.json','sha256':expected})
+          manifestpath.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+          print('Patch installed and manifest updated:',expected)
+          PY
+      - name: Commit and publish app update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add patches/v2.3.6.json manifest.json
+          git commit -m "Publish My Wealth v2.3.6 - Profiles and investment detail"
+          git push
